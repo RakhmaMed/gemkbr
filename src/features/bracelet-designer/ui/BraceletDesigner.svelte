@@ -433,15 +433,18 @@
 	.designer {
 		display: grid;
 		grid-template-columns: minmax(0, 1fr);
-		gap: 0.75rem;
-		min-height: calc(100vh - 6rem);
+		grid-template-rows: minmax(0, 1.2fr) minmax(11rem, 0.95fr) auto;
+		gap: 0.45rem;
+		height: calc(100dvh - var(--chrome-offset, 5.5rem) - var(--mobile-nav-height, 0px) - 0.35rem);
+		min-height: 28rem;
 	}
 
 	.viewport {
 		position: relative;
 		display: grid;
 		grid-template: 1fr / 1fr;
-		min-height: 44vh;
+		min-height: 0;
+		height: 100%;
 		min-width: 0;
 		padding: 0;
 		overflow: hidden;
@@ -456,8 +459,8 @@
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		gap: 0.75rem;
-		margin: 0.75rem 0.85rem 0;
+		gap: 0.5rem;
+		margin: 0.5rem 0.6rem 0;
 		pointer-events: none;
 	}
 
@@ -503,10 +506,13 @@
 	.sidebar {
 		display: flex;
 		flex-direction: column;
-		gap: 0.75rem;
+		gap: 0.45rem;
 		min-width: 0;
-		max-height: 42vh;
+		min-height: 0;
+		height: 100%;
+		max-height: none;
 		overflow: hidden;
+		padding: 0.65rem;
 	}
 
 	.sidebar > :not(.grid) {
@@ -746,7 +752,8 @@
 		display: flex;
 		flex-wrap: wrap;
 		align-items: center;
-		gap: 0.75rem 1rem;
+		gap: 0.55rem 0.85rem;
+		padding: 0.65rem 0.75rem;
 	}
 
 	.metrics-stats {
@@ -836,12 +843,68 @@
 		gap: 0.35rem;
 	}
 
+	@media (max-width: 959px) {
+		.brand-mark {
+			display: none;
+		}
+
+		.viewport-meta .fit-badge {
+			display: none;
+		}
+
+		.lead {
+			font-size: 0.9rem;
+		}
+
+		.form-field span {
+			position: absolute;
+			width: 1px;
+			height: 1px;
+			padding: 0;
+			margin: -1px;
+			overflow: hidden;
+			clip: rect(0, 0, 0, 0);
+			white-space: nowrap;
+			border: 0;
+		}
+
+		.form-field {
+			gap: 0;
+		}
+
+		.form-field input {
+			padding: 0.55rem 0.7rem;
+		}
+
+		.color-tabs-shell,
+		.color-tabs {
+			min-height: 2.1rem;
+		}
+
+		.color-tab {
+			padding: 0.35rem 0.45rem 0.45rem;
+			font-size: 0.82rem;
+		}
+
+		.bead {
+			padding: 0.5rem 0.4rem 0.4rem;
+			border-radius: 0.7rem;
+		}
+
+		.metrics-actions .btn {
+			padding: 0.45rem 0.75rem;
+			font-size: 0.88rem;
+		}
+	}
+
 	@media (min-width: 960px) {
 		.designer {
-			height: calc(100vh - 6rem);
+			height: calc(100dvh - var(--chrome-offset, 5.5rem));
+			min-height: 0;
 			grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
 			grid-template-rows: minmax(0, 1fr) auto;
 			align-items: stretch;
+			gap: 0.75rem;
 		}
 
 		.viewport {
@@ -855,6 +918,8 @@
 			max-height: none;
 			height: 100%;
 			min-height: 0;
+			gap: 0.75rem;
+			padding: 1rem;
 		}
 
 		.metrics {
@@ -862,6 +927,7 @@
 			flex-wrap: nowrap;
 			gap: 1rem 1.25rem;
 			align-items: center;
+			padding: 1rem;
 		}
 
 		.metrics-stats {

@@ -54,7 +54,6 @@ textarea {
 .panel {
 	background: var(--surface);
 	border: 1px solid var(--line);
-	backdrop-filter: blur(8px);
 	border-radius: 1rem;
 	padding: 1rem;
 }

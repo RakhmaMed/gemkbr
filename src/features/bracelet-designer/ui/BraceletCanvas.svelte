@@ -39,6 +39,9 @@
 
 	let worldEl = $state.raw<HTMLDivElement | undefined>(undefined);
 	let hoveredId = $state<string | null>(null);
+	/** Skip left/top transitions after tab restore — Firefox reflows and animates a flash. */
+	let suppressMotion = $state(false);
+	let suppressTimer: ReturnType<typeof setTimeout> | undefined;
 	let drag = $state.raw<{
 		itemId: string;
 		pointerId: number;
@@ -50,6 +53,15 @@
 		angle: number;
 		radiusMm: number;
 	} | null>(null);
+
+	function onVisibilityChange() {
+		if (document.visibilityState !== 'visible') return;
+		suppressMotion = true;
+		clearTimeout(suppressTimer);
+		suppressTimer = setTimeout(() => {
+			suppressMotion = false;
+		}, 120);
+	}
 
 	function displayDiameter(item: CanvasBead): number {
 		return item.imageUrl ? item.diameterMm * PHOTO_SCALE : item.diameterMm;
@@ -284,12 +296,15 @@
 	}
 </script>
 
+<svelte:document onvisibilitychange={onVisibilityChange} />
+
 <div class="stage" role="img" aria-label="Вид браслета сверху">
 	<div
 		bind:this={worldEl}
 		class="world"
 		class:hot={hoveredId !== null || drag !== null}
 		class:dragging={drag?.moved}
+		class:suppress-motion={suppressMotion}
 		role="listbox"
 		tabindex="0"
 		aria-label="Круг браслета"
@@ -356,7 +371,7 @@
 		place-items: center;
 		width: 100%;
 		height: 100%;
-		min-height: 44vh;
+		min-height: 0;
 		overflow: hidden;
 		background: #ffffff;
 		container-type: size;
@@ -440,6 +455,12 @@
 			left 300ms cubic-bezier(0.22, 1, 0.36, 1),
 			top 300ms cubic-bezier(0.22, 1, 0.36, 1),
 			transform 180ms ease;
+	}
+
+	.world.suppress-motion .guide,
+	.world.suppress-motion .cord,
+	.world.suppress-motion .node {
+		transition: none;
 	}
 
 	.node.hovered:not(.dragging) {
