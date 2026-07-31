@@ -21,7 +21,7 @@ jobs:
           port: ${{ secrets.VPS_PORT }}
           script: |
             set -euo pipefail
-            cd /opt/gemkbr
+            cd /root/git/gemkbr
             git fetch origin main
             git reset --hard origin/main
             docker compose -f docker/docker-compose.yml up -d --build
