@@ -433,10 +433,12 @@
 	.designer {
 		display: grid;
 		grid-template-columns: minmax(0, 1fr);
-		grid-template-rows: minmax(0, 1.2fr) minmax(11rem, 0.95fr) auto;
-		gap: 0.45rem;
-		height: calc(100dvh - var(--chrome-offset, 5.5rem) - var(--mobile-nav-height, 0px) - 0.35rem);
-		min-height: 28rem;
+		/* Catalog row gets priority — previous min (~11rem) left ~0px for the bead grid */
+		grid-template-rows: minmax(0, 0.9fr) minmax(16rem, 1.35fr) auto;
+		gap: 0.4rem;
+		height: calc(100svh - var(--chrome-offset, 5.5rem) - var(--mobile-nav-height, 0px) - 0.35rem);
+		max-height: calc(100dvh - var(--chrome-offset, 5.5rem) - var(--mobile-nav-height, 0px) - 0.35rem);
+		min-height: 0;
 	}
 
 	.viewport {
@@ -506,17 +508,22 @@
 	.sidebar {
 		display: flex;
 		flex-direction: column;
-		gap: 0.45rem;
+		gap: 0.4rem;
 		min-width: 0;
 		min-height: 0;
 		height: 100%;
 		max-height: none;
 		overflow: hidden;
-		padding: 0.65rem;
+		padding: 0.55rem;
 	}
 
 	.sidebar > :not(.grid) {
 		flex: 0 0 auto;
+	}
+
+	.sidebar .grid {
+		flex: 1 1 auto;
+		min-height: 9rem;
 	}
 
 	.lead {
@@ -852,8 +859,9 @@
 			display: none;
 		}
 
+		/* Free vertical space for the bead grid */
 		.lead {
-			font-size: 0.9rem;
+			display: none;
 		}
 
 		.form-field span {
@@ -873,16 +881,16 @@
 		}
 
 		.form-field input {
-			padding: 0.55rem 0.7rem;
+			padding: 0.5rem 0.65rem;
 		}
 
 		.color-tabs-shell,
 		.color-tabs {
-			min-height: 2.1rem;
+			min-height: 2rem;
 		}
 
 		.color-tab {
-			padding: 0.35rem 0.45rem 0.45rem;
+			padding: 0.3rem 0.45rem 0.4rem;
 			font-size: 0.82rem;
 		}
 
@@ -891,9 +899,33 @@
 			border-radius: 0.7rem;
 		}
 
+		.metrics {
+			gap: 0.4rem 0.65rem;
+			padding: 0.5rem 0.6rem;
+		}
+
+		.metrics-stats {
+			gap: 0.4rem 0.75rem;
+		}
+
+		.stat.fit {
+			max-width: none;
+			flex: 1 1 100%;
+		}
+
+		.stat.fit strong {
+			font-size: 0.84rem;
+		}
+
+		.metrics-actions {
+			gap: 0.3rem;
+			margin-left: 0;
+			width: 100%;
+		}
+
 		.metrics-actions .btn {
-			padding: 0.45rem 0.75rem;
-			font-size: 0.88rem;
+			padding: 0.42rem 0.7rem;
+			font-size: 0.84rem;
 		}
 	}
 
