@@ -293,20 +293,20 @@
 	<aside class="sidebar panel">
 		{#if selectedVariant}
 			<div class="selected" transition:fly={{ y: 8, duration: 220 }}>
-				<strong>{selectedVariant.name}</strong>
-				<p class="muted">
-					{selectedVariant.diameterMm}мм · {formatRub(selectedVariant.priceMinor)}
-				</p>
+				<div class="selected-head">
+					<strong>{selectedVariant.name}</strong>
+					<span class="muted">{selectedVariant.diameterMm}мм · {formatRub(selectedVariant.priceMinor)}</span>
+				</div>
 				<div class="row">
-					<button class="btn btn-ghost" type="button" onclick={() => commit(moveLeft(design, selectedItemId!))}>←</button>
-					<button class="btn btn-ghost" type="button" onclick={() => commit(moveRight(design, selectedItemId!))}>→</button>
+					<button class="btn btn-ghost" type="button" onclick={() => commit(moveLeft(design, selectedItemId!))} aria-label="Сдвинуть влево">←</button>
+					<button class="btn btn-ghost" type="button" onclick={() => commit(moveRight(design, selectedItemId!))} aria-label="Сдвинуть вправо">→</button>
 					<button
 						class="btn btn-ghost"
 						class:active={replaceArmed}
 						type="button"
 						onclick={() => (replaceArmed = !replaceArmed)}
 					>
-						{replaceArmed ? 'Выберите замену…' : 'Заменить'}
+						{replaceArmed ? 'Выберите…' : 'Заменить'}
 					</button>
 					<button
 						class="btn btn-ghost"
@@ -318,12 +318,12 @@
 					>
 						Удалить
 					</button>
-					<button class="btn btn-ghost" type="button" onclick={clearSelection}>Снять выбор</button>
+					<button class="btn btn-ghost" type="button" onclick={clearSelection}>Снять</button>
 				</div>
 				{#if replaceArmed}
-					<p class="muted">Следующий клик по каталогу заменит выбранный элемент</p>
+					<p class="muted selected-hint">Следующий клик по каталогу заменит элемент</p>
 				{:else}
-					<p class="muted">Клик по каталогу добавляет новую бусину</p>
+					<p class="muted selected-hint desktop-hint">Клик по каталогу добавляет новую бусину</p>
 				{/if}
 			</div>
 		{:else}
@@ -515,7 +515,10 @@
 		height: calc(var(--work-area) * 0.4 - 0.4rem);
 		min-height: 11rem;
 		max-height: none;
-		overflow: hidden;
+		overflow-x: hidden;
+		overflow-y: auto;
+		overscroll-behavior: contain;
+		-webkit-overflow-scrolling: touch;
 		padding: 0.55rem;
 	}
 
@@ -525,7 +528,7 @@
 
 	.sidebar .grid {
 		flex: 1 1 auto;
-		min-height: 0;
+		min-height: 10rem;
 	}
 
 	.lead {
@@ -852,6 +855,23 @@
 		gap: 0.35rem;
 	}
 
+	.selected-head {
+		display: grid;
+		gap: 0.1rem;
+		min-width: 0;
+	}
+
+	.selected-head strong {
+		min-width: 0;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+
+	.selected-hint {
+		margin: 0;
+	}
+
 	@media (max-width: 959px) {
 		.brand-mark {
 			display: none;
@@ -864,6 +884,50 @@
 		/* Free vertical space for the bead grid */
 		.lead {
 			display: none;
+		}
+
+		.selected {
+			gap: 0.25rem;
+		}
+
+		.selected-head {
+			grid-template-columns: minmax(0, 1fr) auto;
+			align-items: baseline;
+			column-gap: 0.45rem;
+		}
+
+		.selected-head .muted {
+			font-size: 0.78rem;
+			white-space: nowrap;
+		}
+
+		.selected-head strong {
+			font-size: 0.88rem;
+		}
+
+		.selected .row {
+			flex-wrap: nowrap;
+			gap: 0.25rem;
+		}
+
+		.selected .row .btn {
+			padding: 0.38rem 0.5rem;
+			font-size: 0.78rem;
+			flex: 0 0 auto;
+		}
+
+		.selected .row .btn:nth-child(3),
+		.selected .row .btn:nth-child(4),
+		.selected .row .btn:nth-child(5) {
+			flex: 1 1 auto;
+		}
+
+		.desktop-hint {
+			display: none;
+		}
+
+		.selected-hint:not(.desktop-hint) {
+			font-size: 0.78rem;
 		}
 
 		.form-field span {
