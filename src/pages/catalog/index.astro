@@ -8,9 +8,11 @@ const products = await catalog.listActiveProducts();
 ---
 
 <BaseLayout title="Каталог — GemKBR" description="Готовые изделия ручной работы GemKBR">
-	<section class="stack">
-		<h1 style="font-family: var(--font-display); font-size: clamp(2rem, 6vw, 3.5rem);">Каталог</h1>
-		<p class="muted">Готовые изделия. Для сборки своего браслета откройте конструктор.</p>
+	<section class="stack catalog">
+		<header class="catalog-intro">
+			<h1>Каталог</h1>
+			<p class="muted">Готовые изделия. Для сборки своего браслета откройте конструктор.</p>
+		</header>
 		<div class="grid-products">
 			{
 				products.map((product) => {
@@ -18,9 +20,23 @@ const products = await catalog.listActiveProducts();
 					return (
 						<article class="product-card">
 							<a href={`/products/${product.slug}`}>
-								<h2>{product.name}</h2>
-								<p class="muted">{product.description}</p>
-								<p>{formatRub(price)}</p>
+								{product.imageUrl ? (
+									<span class="product-card-media">
+										<img
+											class="product-card-image"
+											src={product.imageUrl}
+											alt={product.name}
+											width="512"
+											height="512"
+											loading="lazy"
+										/>
+									</span>
+								) : null}
+								<span class="product-card-body">
+									<h2>{product.name}</h2>
+									<p class="muted">{product.description}</p>
+									<p class="product-card-price">{formatRub(price)}</p>
+								</span>
 							</a>
 						</article>
 					);

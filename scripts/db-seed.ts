@@ -19,6 +19,7 @@ async function seed() {
 			name: string;
 			description: string;
 			categoryId: string;
+			imageUrl?: string;
 			active: boolean;
 			variants: Array<{
 				id: string;
@@ -75,11 +76,11 @@ async function seed() {
 	for (const row of categories) upsertCategory.run(row);
 
 	const upsertProduct = sqlite.prepare(`
-    INSERT INTO products (id, slug, name, description, category_id, active)
-    VALUES (@id, @slug, @name, @description, @categoryId, @active)
+    INSERT INTO products (id, slug, name, description, category_id, image_url, active)
+    VALUES (@id, @slug, @name, @description, @categoryId, @imageUrl, @active)
     ON CONFLICT(id) DO UPDATE SET
       slug=excluded.slug, name=excluded.name, description=excluded.description,
-      category_id=excluded.category_id, active=excluded.active
+      category_id=excluded.category_id, image_url=excluded.image_url, active=excluded.active
   `);
 	const upsertProductVariant = sqlite.prepare(`
     INSERT INTO product_variants (id, product_id, sku, price_minor, stock_quantity, active)
@@ -96,6 +97,7 @@ async function seed() {
 			name: product.name,
 			description: product.description,
 			categoryId: product.categoryId,
+			imageUrl: product.imageUrl ?? '',
 			active: product.active ? 1 : 0,
 		});
 		for (const variant of product.variants) {

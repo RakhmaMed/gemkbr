@@ -20,6 +20,7 @@
     "db:seed": "tsx scripts/db-seed.ts",
     "db:backup": "tsx scripts/backup-db.ts",
     "db:restore": "tsx scripts/restore-db.ts",
+    "catalog:product-previews": "node scripts/generate-product-previews.mjs",
     "outbox:worker": "tsx scripts/outbox-worker.ts",
     "check": "astro check && tsc --noEmit"
   },

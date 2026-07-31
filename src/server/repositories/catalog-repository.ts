@@ -27,6 +27,7 @@ export type CatalogProduct = {
 	name: string;
 	description: string;
 	categoryId: string | null;
+	imageUrl: string;
 	active: boolean;
 	variants: Array<{
 		id: string;

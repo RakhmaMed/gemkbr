@@ -30,6 +30,7 @@ export class SqliteCatalogRepository implements CatalogRepository {
 			name: product.name,
 			description: product.description,
 			categoryId: product.categoryId,
+			imageUrl: product.imageUrl,
 			active: product.active,
 			variants: variants
 				.filter((v) => v.productId === product.id)

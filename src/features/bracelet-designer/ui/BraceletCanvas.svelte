@@ -294,6 +294,67 @@
 	function enterTransition(node: Element) {
 		return scale(node, { duration: 380, start: 0.15, opacity: 0, easing: cubicOut });
 	}
+
+	function loadImage(src: string): Promise<HTMLImageElement | null> {
+		return new Promise((resolve) => {
+			const img = new Image();
+			img.decoding = 'async';
+			img.onload = () => resolve(img);
+			img.onerror = () => resolve(null);
+			img.src = src;
+		});
+	}
+
+	/** Rasterize the current top-down bracelet for cart / saved-design previews. */
+	export async function capturePreview(size = 512): Promise<string | null> {
+		if (items.length === 0) return null;
+
+		const canvas = document.createElement('canvas');
+		canvas.width = size;
+		canvas.height = size;
+		const ctx = canvas.getContext('2d');
+		if (!ctx) return null;
+
+		ctx.fillStyle = '#ffffff';
+		ctx.fillRect(0, 0, size, size);
+
+		const extent = halfExtentMm;
+		const toPx = (mm: number) => (mm / (extent * 2)) * size * PAD;
+		const center = size / 2;
+
+		ctx.beginPath();
+		ctx.arc(center, center, toPx(cordRadiusMm), 0, Math.PI * 2);
+		ctx.strokeStyle = 'rgba(90, 72, 58, 0.22)';
+		ctx.lineWidth = Math.max(2, size / 256);
+		ctx.stroke();
+
+		const uniqueUrls = [...new Set(items.map((item) => item.imageUrl).filter(Boolean))];
+		const loaded = await Promise.all(uniqueUrls.map(async (url) => [url, await loadImage(url)] as const));
+		const images = new Map(loaded);
+
+		for (const item of items) {
+			const [x, , z] = item.pose.position;
+			const px = center + toPx(x);
+			const py = center + toPx(z);
+			const diameter = toPx(displayDiameter(item));
+			const img = item.imageUrl ? images.get(item.imageUrl) : null;
+
+			if (img) {
+				ctx.drawImage(img, px - diameter / 2, py - diameter / 2, diameter, diameter);
+			} else {
+				ctx.beginPath();
+				ctx.arc(px, py, diameter / 2, 0, Math.PI * 2);
+				ctx.fillStyle = item.kind === 'spacer' ? '#9aa3ad' : '#e8b7c8';
+				ctx.fill();
+			}
+		}
+
+		try {
+			return canvas.toDataURL('image/webp', 0.85);
+		} catch {
+			return canvas.toDataURL('image/png');
+		}
+	}
 </script>
 
 <svelte:document onvisibilitychange={onVisibilityChange} />

@@ -150,6 +150,51 @@
     "active": true
   },
   {
+    "id": "comp-white-pearl",
+    "slug": "white-pearl",
+    "name": "Белый жемчуг",
+    "kind": "bead",
+    "material": "crystal",
+    "colorGroup": "clear-white",
+    "imageUrl": "/catalog/crystal-single-1019/white-pearl.webp",
+    "tags": [
+      "stone",
+      "crystal",
+      "clear-white"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-smoky-quartz",
+    "slug": "smoky-quartz",
+    "name": "Дымчатый кварц",
+    "kind": "bead",
+    "material": "crystal",
+    "colorGroup": "clear-white",
+    "imageUrl": "/catalog/crystal-single-1019/smoky-quartz.webp",
+    "tags": [
+      "stone",
+      "crystal",
+      "clear-white"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-four-seasons-phantom-quartz",
+    "slug": "four-seasons-phantom-quartz",
+    "name": "Фантомный кварц «четыре сезона»",
+    "kind": "bead",
+    "material": "crystal",
+    "colorGroup": "clear-white",
+    "imageUrl": "/catalog/crystal-single-1019/four-seasons-phantom-quartz.webp",
+    "tags": [
+      "stone",
+      "crystal",
+      "clear-white"
+    ],
+    "active": true
+  },
+  {
     "id": "comp-madagascar-rose-quartz",
     "slug": "madagascar-rose-quartz",
     "name": "Мадагаскарский розовый кварц",
@@ -187,6 +232,21 @@
     "material": "crystal",
     "colorGroup": "red",
     "imageUrl": "/catalog/crystal-single-1019/red-fire-quartz.webp",
+    "tags": [
+      "stone",
+      "crystal",
+      "red"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-fire-quartz-phantom",
+    "slug": "fire-quartz-phantom",
+    "name": "Фантомный огненный кварц",
+    "kind": "bead",
+    "material": "crystal",
+    "colorGroup": "red",
+    "imageUrl": "/catalog/crystal-single-1019/fire-quartz-phantom.webp",
     "tags": [
       "stone",
       "crystal",
@@ -375,6 +435,126 @@
     "active": true
   },
   {
+    "id": "comp-malachite",
+    "slug": "malachite",
+    "name": "Малахит",
+    "kind": "bead",
+    "material": "crystal",
+    "colorGroup": "green",
+    "imageUrl": "/catalog/crystal-single-1019/malachite.webp",
+    "tags": [
+      "stone",
+      "crystal",
+      "green"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-peridot",
+    "slug": "peridot",
+    "name": "Перидот",
+    "kind": "bead",
+    "material": "crystal",
+    "colorGroup": "green",
+    "imageUrl": "/catalog/crystal-single-1019/peridot.webp",
+    "tags": [
+      "stone",
+      "crystal",
+      "green"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-green-rabbit-hair-quartz",
+    "slug": "green-rabbit-hair-quartz",
+    "name": "Зелёный кварц «волосатик»",
+    "kind": "bead",
+    "material": "crystal",
+    "colorGroup": "green",
+    "imageUrl": "/catalog/crystal-single-1019/green-rabbit-hair-quartz.webp",
+    "tags": [
+      "stone",
+      "crystal",
+      "green"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-green-rutilated-quartz",
+    "slug": "green-rutilated-quartz",
+    "name": "Зелёный рутилированный кварц",
+    "kind": "bead",
+    "material": "crystal",
+    "colorGroup": "green",
+    "imageUrl": "/catalog/crystal-single-1019/green-rutilated-quartz.webp",
+    "tags": [
+      "stone",
+      "crystal",
+      "green"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-green-quartz",
+    "slug": "green-quartz",
+    "name": "Зелёный кварц",
+    "kind": "bead",
+    "material": "crystal",
+    "colorGroup": "green",
+    "imageUrl": "/catalog/crystal-single-1019/green-quartz.webp",
+    "tags": [
+      "stone",
+      "crystal",
+      "green"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-green-strawberry-quartz",
+    "slug": "green-strawberry-quartz",
+    "name": "Зелёный клубничный кварц",
+    "kind": "bead",
+    "material": "crystal",
+    "colorGroup": "green",
+    "imageUrl": "/catalog/crystal-single-1019/green-strawberry-quartz.webp",
+    "tags": [
+      "stone",
+      "crystal",
+      "green"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-green-dragon-crystal",
+    "slug": "green-dragon-crystal",
+    "name": "Зелёный драконий кристалл",
+    "kind": "bead",
+    "material": "crystal",
+    "colorGroup": "green",
+    "imageUrl": "/catalog/crystal-single-1019/green-dragon-crystal.webp",
+    "tags": [
+      "stone",
+      "crystal",
+      "green"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-treasure-bowl-green-phantom-quartz",
+    "slug": "treasure-bowl-green-phantom-quartz",
+    "name": "Зелёный фантомный кварц «чаша сокровищ»",
+    "kind": "bead",
+    "material": "crystal",
+    "colorGroup": "green",
+    "imageUrl": "/catalog/crystal-single-1019/treasure-bowl-green-phantom-quartz.webp",
+    "tags": [
+      "stone",
+      "crystal",
+      "green"
+    ],
+    "active": true
+  },
+  {
     "id": "comp-blue-moonstone",
     "slug": "blue-moonstone",
     "name": "Голубой лунный камень",
@@ -491,6 +671,696 @@
       "stone",
       "crystal",
       "purple"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-sCO61_1",
+    "slug": "sCO61_1",
+    "name": "Овальный фантомный кварц",
+    "kind": "bead",
+    "material": "crystal",
+    "colorGroup": "clear-white",
+    "imageUrl": "/catalog/astris/image/sCO61_1.webp",
+    "tags": [
+      "stone",
+      "crystal",
+      "clear-white"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-hdyBj_1",
+    "slug": "hdyBj_1",
+    "name": "Золотой цилиндрический разделитель",
+    "kind": "spacer",
+    "material": "metal",
+    "colorGroup": "gold",
+    "imageUrl": "/catalog/astris/image/hdyBj_1.webp",
+    "tags": [
+      "metal",
+      "gold"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-N8iQV_1",
+    "slug": "N8iQV_1",
+    "name": "Золотой геометрический разделитель",
+    "kind": "spacer",
+    "material": "metal",
+    "colorGroup": "gold",
+    "imageUrl": "/catalog/astris/image/N8iQV_1.webp",
+    "tags": [
+      "metal",
+      "gold"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-4f7eb6d1-77e8-4d6c-b7c2-e97cae220bd9",
+    "slug": "4f7eb6d1-77e8-4d6c-b7c2-e97cae220bd9",
+    "name": "Гранёный стеклянный цилиндр",
+    "kind": "spacer",
+    "material": "crystal",
+    "colorGroup": "clear-white",
+    "imageUrl": "/catalog/astris/image/4f7eb6d1-77e8-4d6c-b7c2-e97cae220bd9.webp",
+    "tags": [
+      "stone",
+      "crystal",
+      "clear-white"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-GaaIp_1",
+    "slug": "GaaIp_1",
+    "name": "Подвеска «хулу» с кристаллами",
+    "kind": "charm",
+    "material": "metal",
+    "colorGroup": "gold",
+    "imageUrl": "/catalog/astris/image/GaaIp_1.webp",
+    "tags": [
+      "charm",
+      "metal",
+      "gold"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-YCZRH_1",
+    "slug": "YCZRH_1",
+    "name": "Подвеска «молния»",
+    "kind": "charm",
+    "material": "metal",
+    "colorGroup": "silver",
+    "imageUrl": "/catalog/astris/image/YCZRH_1.webp",
+    "tags": [
+      "charm",
+      "metal",
+      "silver"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-nxM7X_1",
+    "slug": "nxM7X_1",
+    "name": "Подвеска «полумесяц» с кристаллами",
+    "kind": "charm",
+    "material": "metal",
+    "colorGroup": "silver",
+    "imageUrl": "/catalog/astris/image/nxM7X_1.webp",
+    "tags": [
+      "charm",
+      "metal",
+      "silver"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-UVlvE_1",
+    "slug": "UVlvE_1",
+    "name": "Подвеска «радуга» с цветными камнями",
+    "kind": "charm",
+    "material": "metal",
+    "colorGroup": "gold",
+    "imageUrl": "/catalog/astris/image/UVlvE_1.webp",
+    "tags": [
+      "charm",
+      "metal",
+      "gold"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-552Lb_1",
+    "slug": "552Lb_1",
+    "name": "Подвеска «фу» (удача)",
+    "kind": "charm",
+    "material": "metal",
+    "colorGroup": "gold",
+    "imageUrl": "/catalog/astris/image/552Lb_1.webp",
+    "tags": [
+      "charm",
+      "metal",
+      "gold"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-prFnD_1",
+    "slug": "prFnD_1",
+    "name": "Подвеска «хвост кита» с кристаллами",
+    "kind": "charm",
+    "material": "metal",
+    "colorGroup": "silver",
+    "imageUrl": "/catalog/astris/image/prFnD_1.webp",
+    "tags": [
+      "charm",
+      "metal",
+      "silver"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-SDOSc_1",
+    "slug": "SDOSc_1",
+    "name": "Подвеска «бабочка» с жемчужиной",
+    "kind": "charm",
+    "material": "metal",
+    "colorGroup": "gold",
+    "imageUrl": "/catalog/astris/image/SDOSc_1.webp",
+    "tags": [
+      "charm",
+      "metal",
+      "gold"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-XhaLj_1",
+    "slug": "XhaLj_1",
+    "name": "Подвеска «луна» с кристаллами",
+    "kind": "charm",
+    "material": "metal",
+    "colorGroup": "silver",
+    "imageUrl": "/catalog/astris/image/XhaLj_1.webp",
+    "tags": [
+      "charm",
+      "metal",
+      "silver"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-d9C1T_1",
+    "slug": "d9C1T_1",
+    "name": "Золотая подвеска «полумесяц»",
+    "kind": "charm",
+    "material": "metal",
+    "colorGroup": "gold",
+    "imageUrl": "/catalog/astris/image/d9C1T_1.webp",
+    "tags": [
+      "charm",
+      "metal",
+      "gold"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-pPIci_1",
+    "slug": "pPIci_1",
+    "name": "Подвеска «луна и звёзды»",
+    "kind": "charm",
+    "material": "metal",
+    "colorGroup": "silver",
+    "imageUrl": "/catalog/astris/image/pPIci_1.webp",
+    "tags": [
+      "charm",
+      "metal",
+      "silver"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-ef7TQ_1",
+    "slug": "ef7TQ_1",
+    "name": "Подвеска «ключ» с сердцем",
+    "kind": "charm",
+    "material": "metal",
+    "colorGroup": "silver",
+    "imageUrl": "/catalog/astris/image/ef7TQ_1.webp",
+    "tags": [
+      "charm",
+      "metal",
+      "silver"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-jt9pp_1",
+    "slug": "jt9pp_1",
+    "name": "Подвеска «звезда» с кристаллом",
+    "kind": "charm",
+    "material": "metal",
+    "colorGroup": "silver",
+    "imageUrl": "/catalog/astris/image/jt9pp_1.webp",
+    "tags": [
+      "charm",
+      "metal",
+      "silver"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-40978b73-4f60-4485-96ea-ea31bfd3a183",
+    "slug": "40978b73-4f60-4485-96ea-ea31bfd3a183",
+    "name": "Подвеска Hello Kitty (золото)",
+    "kind": "charm",
+    "material": "metal",
+    "colorGroup": "gold",
+    "imageUrl": "/catalog/astris/image/40978b73-4f60-4485-96ea-ea31bfd3a183.webp",
+    "tags": [
+      "charm",
+      "metal",
+      "gold"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-c0765d28-1728-4b9b-8d96-02cb5f24f4a3",
+    "slug": "c0765d28-1728-4b9b-8d96-02cb5f24f4a3",
+    "name": "Подвеска Hello Kitty (серебро)",
+    "kind": "charm",
+    "material": "metal",
+    "colorGroup": "silver",
+    "imageUrl": "/catalog/astris/image/c0765d28-1728-4b9b-8d96-02cb5f24f4a3.webp",
+    "tags": [
+      "charm",
+      "metal",
+      "silver"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-Z9tog_1",
+    "slug": "Z9tog_1",
+    "name": "Разделитель «цветок» с кристаллами",
+    "kind": "spacer",
+    "material": "metal",
+    "colorGroup": "silver",
+    "imageUrl": "/catalog/astris/image/Z9tog_1.webp",
+    "tags": [
+      "metal",
+      "silver"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-SMW5r_1",
+    "slug": "SMW5r_1",
+    "name": "Бусина клуазоне сине-голубая",
+    "kind": "bead",
+    "material": "metal",
+    "colorGroup": "gold",
+    "imageUrl": "/catalog/astris/image/SMW5r_1.webp",
+    "tags": [
+      "metal",
+      "gold"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-DjR08_1",
+    "slug": "DjR08_1",
+    "name": "Золотая ажурная бусина с кристаллами",
+    "kind": "bead",
+    "material": "metal",
+    "colorGroup": "gold",
+    "imageUrl": "/catalog/astris/image/DjR08_1.webp",
+    "tags": [
+      "metal",
+      "gold"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-v9CWs_1",
+    "slug": "v9CWs_1",
+    "name": "Серебряная ажурная бусина",
+    "kind": "bead",
+    "material": "metal",
+    "colorGroup": "silver",
+    "imageUrl": "/catalog/astris/image/v9CWs_1.webp",
+    "tags": [
+      "metal",
+      "silver"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-TiqGy_1",
+    "slug": "TiqGy_1",
+    "name": "Золотая бусина с бантиками",
+    "kind": "spacer",
+    "material": "metal",
+    "colorGroup": "gold",
+    "imageUrl": "/catalog/astris/image/TiqGy_1.webp",
+    "tags": [
+      "metal",
+      "gold"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-wmMtQ_1",
+    "slug": "wmMtQ_1",
+    "name": "Серебряный крест",
+    "kind": "spacer",
+    "material": "metal",
+    "colorGroup": "silver",
+    "imageUrl": "/catalog/astris/image/wmMtQ_1.webp",
+    "tags": [
+      "metal",
+      "silver"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-3iKC8_1",
+    "slug": "3iKC8_1",
+    "name": "Серебряная плетёная бусина",
+    "kind": "bead",
+    "material": "metal",
+    "colorGroup": "silver",
+    "imageUrl": "/catalog/astris/image/3iKC8_1.webp",
+    "tags": [
+      "metal",
+      "silver"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-49hln_1",
+    "slug": "49hln_1",
+    "name": "Кубическая бусина с фианитами",
+    "kind": "bead",
+    "material": "metal",
+    "colorGroup": "silver",
+    "imageUrl": "/catalog/astris/image/49hln_1.webp",
+    "tags": [
+      "metal",
+      "silver"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-YQlCK_1",
+    "slug": "YQlCK_1",
+    "name": "Бусина-бочонок «звёздная пыль»",
+    "kind": "spacer",
+    "material": "metal",
+    "colorGroup": "silver",
+    "imageUrl": "/catalog/astris/image/YQlCK_1.webp",
+    "tags": [
+      "metal",
+      "silver"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-ehyNk_1",
+    "slug": "ehyNk_1",
+    "name": "Серебряный ажурный разделитель",
+    "kind": "spacer",
+    "material": "metal",
+    "colorGroup": "silver",
+    "imageUrl": "/catalog/astris/image/ehyNk_1.webp",
+    "tags": [
+      "metal",
+      "silver"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-3jXyr_1",
+    "slug": "3jXyr_1",
+    "name": "Золотой разделитель с кристаллами",
+    "kind": "spacer",
+    "material": "metal",
+    "colorGroup": "gold",
+    "imageUrl": "/catalog/astris/image/3jXyr_1.webp",
+    "tags": [
+      "metal",
+      "gold"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-PnqVF_1",
+    "slug": "PnqVF_1",
+    "name": "Золотой цилиндр с узором",
+    "kind": "spacer",
+    "material": "metal",
+    "colorGroup": "gold",
+    "imageUrl": "/catalog/astris/image/PnqVF_1.webp",
+    "tags": [
+      "metal",
+      "gold"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-eYf3D_1",
+    "slug": "eYf3D_1",
+    "name": "Серебряный цилиндр с узором",
+    "kind": "spacer",
+    "material": "metal",
+    "colorGroup": "silver",
+    "imageUrl": "/catalog/astris/image/eYf3D_1.webp",
+    "tags": [
+      "metal",
+      "silver"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-U80ue_1",
+    "slug": "U80ue_1",
+    "name": "Широкий разделитель с кристаллами",
+    "kind": "spacer",
+    "material": "metal",
+    "colorGroup": "silver",
+    "imageUrl": "/catalog/astris/image/U80ue_1.webp",
+    "tags": [
+      "metal",
+      "silver"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-I5ft3_1",
+    "slug": "I5ft3_1",
+    "name": "Разделитель с двумя прямоугольными кристаллами",
+    "kind": "spacer",
+    "material": "metal",
+    "colorGroup": "silver",
+    "imageUrl": "/catalog/astris/image/I5ft3_1.webp",
+    "tags": [
+      "metal",
+      "silver"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-o9I7t_1",
+    "slug": "o9I7t_1",
+    "name": "Серебряный бочонок с рельефом",
+    "kind": "spacer",
+    "material": "metal",
+    "colorGroup": "silver",
+    "imageUrl": "/catalog/astris/image/o9I7t_1.webp",
+    "tags": [
+      "metal",
+      "silver"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-qQYIC_1",
+    "slug": "qQYIC_1",
+    "name": "Серебряная роза",
+    "kind": "spacer",
+    "material": "metal",
+    "colorGroup": "silver",
+    "imageUrl": "/catalog/astris/image/qQYIC_1.webp",
+    "tags": [
+      "metal",
+      "silver"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-vZRBe_1",
+    "slug": "vZRBe_1",
+    "name": "Шарм с зелёным камнем и зернением",
+    "kind": "spacer",
+    "material": "metal",
+    "colorGroup": "silver",
+    "imageUrl": "/catalog/astris/image/vZRBe_1.webp",
+    "tags": [
+      "metal",
+      "silver"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-8SQMx_1",
+    "slug": "8SQMx_1",
+    "name": "Шарм из розового золота с камнями",
+    "kind": "spacer",
+    "material": "metal",
+    "colorGroup": "gold",
+    "imageUrl": "/catalog/astris/image/8SQMx_1.webp",
+    "tags": [
+      "metal",
+      "gold"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-czD53_1",
+    "slug": "czD53_1",
+    "name": "Серебряный цилиндр с клевером",
+    "kind": "spacer",
+    "material": "metal",
+    "colorGroup": "silver",
+    "imageUrl": "/catalog/astris/image/czD53_1.webp",
+    "tags": [
+      "metal",
+      "silver"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-hv9Q4_1",
+    "slug": "hv9Q4_1",
+    "name": "Плетёный серебряный бочонок",
+    "kind": "spacer",
+    "material": "metal",
+    "colorGroup": "silver",
+    "imageUrl": "/catalog/astris/image/hv9Q4_1.webp",
+    "tags": [
+      "metal",
+      "silver"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-A61dV_1",
+    "slug": "A61dV_1",
+    "name": "Разделитель с кристаллами-багетами",
+    "kind": "spacer",
+    "material": "metal",
+    "colorGroup": "silver",
+    "imageUrl": "/catalog/astris/image/A61dV_1.webp",
+    "tags": [
+      "metal",
+      "silver"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-6kyrV_1",
+    "slug": "6kyrV_1",
+    "name": "Бусина «шишка» / чешуя",
+    "kind": "spacer",
+    "material": "metal",
+    "colorGroup": "silver",
+    "imageUrl": "/catalog/astris/image/6kyrV_1.webp",
+    "tags": [
+      "metal",
+      "silver"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-asm13_1",
+    "slug": "asm13_1",
+    "name": "Разделитель с прямоугольными кристаллами",
+    "kind": "spacer",
+    "material": "metal",
+    "colorGroup": "silver",
+    "imageUrl": "/catalog/astris/image/asm13_1.webp",
+    "tags": [
+      "metal",
+      "silver"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-GhfXK_1",
+    "slug": "GhfXK_1",
+    "name": "Серебряный разделитель с лиственным узором",
+    "kind": "spacer",
+    "material": "metal",
+    "colorGroup": "silver",
+    "imageUrl": "/catalog/astris/image/GhfXK_1.webp",
+    "tags": [
+      "metal",
+      "silver"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-82QFP_1",
+    "slug": "82QFP_1",
+    "name": "Разделитель с тремя квадратными кристаллами",
+    "kind": "spacer",
+    "material": "metal",
+    "colorGroup": "silver",
+    "imageUrl": "/catalog/astris/image/82QFP_1.webp",
+    "tags": [
+      "metal",
+      "silver"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-HUDM6_1",
+    "slug": "HUDM6_1",
+    "name": "Разделитель с тремя круглыми кристаллами",
+    "kind": "spacer",
+    "material": "metal",
+    "colorGroup": "silver",
+    "imageUrl": "/catalog/astris/image/HUDM6_1.webp",
+    "tags": [
+      "metal",
+      "silver"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-PRw3m_1",
+    "slug": "PRw3m_1",
+    "name": "Рондель с фианитами",
+    "kind": "spacer",
+    "material": "metal",
+    "colorGroup": "silver",
+    "imageUrl": "/catalog/astris/image/PRw3m_1.webp",
+    "tags": [
+      "metal",
+      "silver"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-Y258K_1",
+    "slug": "Y258K_1",
+    "name": "Чёрно-белый камень",
+    "kind": "bead",
+    "material": "crystal",
+    "colorGroup": "clear-white",
+    "imageUrl": "/catalog/astris/image/Y258K_1.webp",
+    "tags": [
+      "stone",
+      "crystal",
+      "clear-white"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-yMTQ9_1",
+    "slug": "yMTQ9_1",
+    "name": "yMTQ9_1",
+    "kind": "bead",
+    "material": "crystal",
+    "colorGroup": "yellow-gold",
+    "imageUrl": "/catalog/astris/image/yMTQ9_1.webp",
+    "tags": [
+      "stone",
+      "crystal",
+      "yellow-gold"
     ],
     "active": true
   },

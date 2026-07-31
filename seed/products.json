@@ -5,6 +5,7 @@
     "name": "Браслет Moonstone",
     "description": "Готовый браслет из лунного камня ручной сборки.",
     "categoryId": "cat-bracelets",
+    "imageUrl": "/catalog/products/moonstone-bracelet.webp",
     "active": true,
     "variants": [
       {
@@ -22,6 +23,7 @@
     "name": "Браслет Obsidian",
     "description": "Минималистичный браслет из обсидиана.",
     "categoryId": "cat-bracelets",
+    "imageUrl": "/catalog/products/obsidian-bracelet.webp",
     "active": true,
     "variants": [
       {

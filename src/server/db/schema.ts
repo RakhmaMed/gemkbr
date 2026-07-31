@@ -13,6 +13,7 @@ export const products = sqliteTable('products', {
 	name: text('name').notNull(),
 	description: text('description').notNull().default(''),
 	categoryId: text('category_id').references(() => categories.id),
+	imageUrl: text('image_url').notNull().default(''),
 	active: integer('active', { mode: 'boolean' }).notNull().default(true),
 });
 

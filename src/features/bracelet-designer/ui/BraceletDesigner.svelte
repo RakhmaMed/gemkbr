@@ -105,6 +105,7 @@
 	let busy = $state(false);
 	let tabsCanScrollLeft = $state(false);
 	let tabsCanScrollRight = $state(false);
+	let canvasRef = $state<{ capturePreview: (size?: number) => Promise<string | null> } | null>(null);
 
 	function syncTabsOverflow(el: HTMLDivElement) {
 		const max = el.scrollWidth - el.clientWidth;
@@ -242,11 +243,20 @@
 		commit(next);
 	}
 
+	async function capturePreviewDataUrl(): Promise<string | undefined> {
+		try {
+			return (await canvasRef?.capturePreview(512)) ?? undefined;
+		} catch {
+			return undefined;
+		}
+	}
+
 	async function save() {
 		busy = true;
 		status = '';
 		try {
-			const result = await actions.saveDesign({ design });
+			const previewDataUrl = await capturePreviewDataUrl();
+			const result = await actions.saveDesign({ design, previewDataUrl });
 			if (result.error || !result.data?.ok) {
 				status = 'Не удалось сохранить дизайн';
 			} else {
@@ -261,7 +271,12 @@
 		busy = true;
 		status = '';
 		try {
-			const result = await actions.addToCart({ kind: 'custom_bracelet', design });
+			const previewDataUrl = await capturePreviewDataUrl();
+			const result = await actions.addToCart({
+				kind: 'custom_bracelet',
+				design,
+				previewDataUrl,
+			});
 			if (result.error || !result.data || !('ok' in result.data) || !result.data.ok) {
 				status = 'Не удалось добавить в корзину';
 			} else {
@@ -283,6 +298,7 @@
 			</div>
 		</div>
 		<BraceletCanvas
+			bind:this={canvasRef}
 			items={canvasItems}
 			selectedItemId={selectedItemId}
 			onSelect={onSelectItem}

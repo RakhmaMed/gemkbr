@@ -34,7 +34,7 @@ describe('CatalogRepository contract (sqlite)', () => {
       CREATE TABLE categories (id TEXT PRIMARY KEY, slug TEXT NOT NULL UNIQUE, name TEXT NOT NULL, sort_order INTEGER NOT NULL);
       CREATE TABLE products (
         id TEXT PRIMARY KEY, slug TEXT NOT NULL UNIQUE, name TEXT NOT NULL, description TEXT NOT NULL,
-        category_id TEXT, active INTEGER NOT NULL
+        category_id TEXT, image_url TEXT NOT NULL DEFAULT '', active INTEGER NOT NULL
       );
       CREATE TABLE product_variants (
         id TEXT PRIMARY KEY, product_id TEXT NOT NULL REFERENCES products(id), sku TEXT NOT NULL UNIQUE,

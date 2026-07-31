@@ -13,11 +13,28 @@ if (!product) {
 }
 
 const variant = product.variants[0];
+const siteUrl = Astro.site?.href?.replace(/\/$/, '') ?? '';
+const imageAbs = product.imageUrl
+	? product.imageUrl.startsWith('http')
+		? product.imageUrl
+		: `${siteUrl}${product.imageUrl}`
+	: undefined;
 ---
 
 <BaseLayout title={`${product.name} — GemKBR`} description={product.description}>
-	<article class="stack" style="max-width: 42rem;">
+	<article class="stack product-detail" style="max-width: 42rem;">
 		<a class="muted" href="/catalog">← Каталог</a>
+		{
+			product.imageUrl ? (
+				<img
+					class="product-detail-image"
+					src={product.imageUrl}
+					alt={product.name}
+					width="1024"
+					height="1024"
+				/>
+			) : null
+		}
 		<h1 style="font-family: var(--font-display); font-size: clamp(2rem, 6vw, 3.2rem); margin: 0;">
 			{product.name}
 		</h1>
@@ -37,6 +54,7 @@ const variant = product.variants[0];
 		'@type': 'Product',
 		name: product.name,
 		description: product.description,
+		image: imageAbs,
 		offers: variant
 			? {
 					'@type': 'Offer',
