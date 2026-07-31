@@ -100,20 +100,38 @@ const canonical = new URL(canonicalPath, siteUrl).toString();
 		align-items: center;
 		justify-content: space-between;
 		gap: 1rem;
-		padding: 1rem 1.25rem;
+		padding: 1rem clamp(1rem, 3vw, 1.75rem);
+	}
+
+	.site-header {
+		position: sticky;
+		top: 0;
+		z-index: 20;
+		backdrop-filter: blur(10px);
+		background: color-mix(in srgb, var(--bg) 78%, transparent);
+		border-bottom: 1px solid transparent;
 	}
 
 	.brand {
 		font-family: var(--font-display);
-		font-size: clamp(1.6rem, 4vw, 2.2rem);
+		font-size: clamp(1.45rem, 3.5vw, 2rem);
 		letter-spacing: 0.02em;
+		line-height: 1;
+		flex-shrink: 0;
 	}
 
 	.nav {
 		display: flex;
-		flex-wrap: wrap;
-		gap: 0.85rem;
+		flex-wrap: nowrap;
+		align-items: center;
+		justify-content: flex-end;
+		gap: clamp(0.65rem, 2vw, 1.1rem);
 		font-size: 0.95rem;
+		line-height: 1.2;
+	}
+
+	.nav a {
+		white-space: nowrap;
 	}
 
 	.nav a:hover {
@@ -122,12 +140,35 @@ const canonical = new URL(canonicalPath, siteUrl).toString();
 
 	main {
 		min-height: 70vh;
-		padding: 0 1.25rem 3rem;
+		padding: 0 clamp(1rem, 3vw, 1.75rem) 3rem;
 	}
 
 	.site-footer {
 		border-top: 1px solid var(--line);
 		color: var(--ink-muted);
 		font-size: 0.9rem;
+	}
+
+	@media (max-width: 640px) {
+		.site-header {
+			flex-direction: column;
+			align-items: stretch;
+			gap: 0.7rem;
+			padding-bottom: 0.85rem;
+		}
+
+		.nav {
+			display: grid;
+			grid-template-columns: repeat(4, minmax(0, 1fr));
+			justify-content: stretch;
+			width: 100%;
+			gap: 0.35rem;
+			font-size: 0.84rem;
+			text-align: center;
+		}
+
+		.nav a {
+			padding: 0.15rem 0;
+		}
 	}
 </style>

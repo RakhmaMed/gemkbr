@@ -39,9 +39,16 @@ textarea {
 }
 
 .btn-ghost {
-	background: transparent;
+	background: #fffdf8;
 	color: var(--ink);
-	border: 1px solid var(--line);
+	border: 1px solid color-mix(in srgb, var(--ink) 28%, var(--line));
+	box-shadow: 0 1px 0 rgba(28, 25, 20, 0.04);
+}
+
+.btn-ghost:hover {
+	background: #fff;
+	border-color: color-mix(in srgb, var(--ink) 42%, var(--line));
+	filter: none;
 }
 
 .panel {
@@ -50,34 +57,6 @@ textarea {
 	backdrop-filter: blur(8px);
 	border-radius: 1rem;
 	padding: 1rem;
-}
-
-.hero {
-	display: grid;
-	gap: 1.25rem;
-	align-items: end;
-	min-height: calc(100vh - 5.5rem);
-	padding: 2rem 0 3rem;
-}
-
-.hero h1 {
-	margin: 0;
-	font-family: var(--font-display);
-	font-size: clamp(3rem, 12vw, 7rem);
-	line-height: 0.95;
-}
-
-.hero p {
-	max-width: 34rem;
-	margin: 0;
-	color: var(--ink-muted);
-	font-size: 1.1rem;
-}
-
-.hero-actions {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 0.75rem;
 }
 
 .grid-products {
