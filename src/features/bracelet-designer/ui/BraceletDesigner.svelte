@@ -431,13 +431,15 @@
 
 <style>
 	.designer {
+		/* Mobile: canvas ~60% + catalog ~40% of the visible work area; metrics scrolls below */
+		--work-area: calc(
+			100svh - var(--chrome-offset, 5.5rem) - var(--mobile-nav-height, 0px) - 0.75rem
+		);
 		display: grid;
 		grid-template-columns: minmax(0, 1fr);
-		/* Catalog row gets priority — previous min (~11rem) left ~0px for the bead grid */
-		grid-template-rows: minmax(0, 0.9fr) minmax(16rem, 1.35fr) auto;
+		grid-template-rows: auto auto auto;
 		gap: 0.4rem;
-		height: calc(100svh - var(--chrome-offset, 5.5rem) - var(--mobile-nav-height, 0px) - 0.35rem);
-		max-height: calc(100dvh - var(--chrome-offset, 5.5rem) - var(--mobile-nav-height, 0px) - 0.35rem);
+		height: auto;
 		min-height: 0;
 	}
 
@@ -445,8 +447,8 @@
 		position: relative;
 		display: grid;
 		grid-template: 1fr / 1fr;
-		min-height: 0;
-		height: 100%;
+		height: calc(var(--work-area) * 0.6);
+		min-height: 14rem;
 		min-width: 0;
 		padding: 0;
 		overflow: hidden;
@@ -510,8 +512,8 @@
 		flex-direction: column;
 		gap: 0.4rem;
 		min-width: 0;
-		min-height: 0;
-		height: 100%;
+		height: calc(var(--work-area) * 0.4 - 0.4rem);
+		min-height: 11rem;
 		max-height: none;
 		overflow: hidden;
 		padding: 0.55rem;
@@ -523,7 +525,7 @@
 
 	.sidebar .grid {
 		flex: 1 1 auto;
-		min-height: 9rem;
+		min-height: 0;
 	}
 
 	.lead {
@@ -931,6 +933,7 @@
 
 	@media (min-width: 960px) {
 		.designer {
+			--work-area: auto;
 			height: calc(100dvh - var(--chrome-offset, 5.5rem));
 			min-height: 0;
 			grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
@@ -941,17 +944,21 @@
 
 		.viewport {
 			grid-row: 1;
-			min-height: 0;
 			height: 100%;
+			min-height: 0;
 		}
 
 		.sidebar {
 			grid-row: 1;
-			max-height: none;
 			height: 100%;
 			min-height: 0;
+			max-height: none;
 			gap: 0.75rem;
 			padding: 1rem;
+		}
+
+		.sidebar .grid {
+			min-height: 0;
 		}
 
 		.metrics {
