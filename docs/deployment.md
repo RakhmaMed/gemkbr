@@ -49,6 +49,14 @@ After the first successful workflow, package `ghcr.io/rakhmamed/gemkbr` appears 
 
 Do **not** run `docker compose … --build` on this VPS — it saturates 1 CPU / 1 GB and takes the site down.
 
+On this host, nginx already binds `:80`/`:443`. Keep `docker/docker-compose.override.yml` (publish `127.0.0.1:4321`, disable Caddy). When using `-f`, always pass the override explicitly — Compose will not auto-load it:
+
+```bash
+docker compose -f docker/docker-compose.yml -f docker/docker-compose.override.yml up -d --no-build
+```
+
+`git reset --hard` on deploy does not remove the override if it is untracked; do not commit secrets into it.
+
 ### Manual first start / recovery
 
 ```bash
