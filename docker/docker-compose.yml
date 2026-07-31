@@ -1,5 +1,6 @@
 services:
   app:
+    image: ${GEMKBR_IMAGE:-ghcr.io/rakhmamed/gemkbr:latest}
     build:
       context: ..
       dockerfile: docker/Dockerfile
@@ -47,6 +48,7 @@ services:
         condition: service_healthy
 
   outbox-worker:
+    image: ${GEMKBR_IMAGE:-ghcr.io/rakhmamed/gemkbr:latest}
     build:
       context: ..
       dockerfile: docker/Dockerfile

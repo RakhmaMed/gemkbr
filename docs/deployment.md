@@ -32,7 +32,34 @@ docker compose -f docker/docker-compose.local.yml up --build
    - `DOMAIN=gemkbr.ru`
    - `ORDER_NOTIFIER_MODE=console|pii_safe|full`
 3. Place `.env` next to the compose project root used by deploy.
-4. Run:
+
+### Continuous deploy (recommended)
+
+Build runs on **GitHub Actions** (not on the 1 GB VPS). The VPS only pulls a prebuilt image and restarts containers — downtime is seconds, not a full compile.
+
+Flow:
+
+```text
+push → main → Actions builds image → push to GHCR → SSH → docker pull → up -d
+```
+
+Required GitHub Actions secrets: `VPS_HOST`, `VPS_USER`, `VPS_SSH_KEY`, `VPS_PORT`.
+
+After the first successful workflow, package `ghcr.io/rakhmamed/gemkbr` appears under the repo **Packages**. Keep it private; deploy logs into GHCR with `GITHUB_TOKEN` for the pull.
+
+Do **not** run `docker compose … --build` on this VPS — it saturates 1 CPU / 1 GB and takes the site down.
+
+### Manual first start / recovery
+
+```bash
+# after an image exists in GHCR (or build elsewhere and tag locally)
+export GEMKBR_IMAGE=ghcr.io/rakhmamed/gemkbr:latest
+echo "$GHCR_TOKEN" | docker login ghcr.io -u USER --password-stdin
+docker compose -f docker/docker-compose.yml pull app outbox-worker
+docker compose -f docker/docker-compose.yml up -d --no-build
+```
+
+Local/dev still can build on a stronger machine:
 
 ```bash
 docker compose -f docker/docker-compose.yml up -d --build
