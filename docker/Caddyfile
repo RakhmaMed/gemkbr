@@ -1,0 +1,27 @@
+{
+	email openmailto@example.com
+	admin off
+}
+
+gemkbr.ru, www.gemkbr.ru {
+	encode gzip zstd
+	reverse_proxy app:4321
+
+	header {
+		Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+		X-Content-Type-Options "nosniff"
+		Referrer-Policy "strict-origin-when-cross-origin"
+		X-Frame-Options "SAMEORIGIN"
+		Permissions-Policy "camera=(), microphone=(), geolocation=()"
+		-Server
+	}
+
+	@health path /health/*
+	header @health Cache-Control "no-store"
+}
+
+:80 {
+	bind 0.0.0.0
+	encode gzip zstd
+	reverse_proxy app:4321
+}

@@ -1,0 +1,14 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BraceletPoc from '../../features/bracelet-designer/scene/BraceletPoc.svelte';
+---
+
+<BaseLayout title="3D PoC — GemKBR">
+	<section class="stack">
+		<h1 style="font-family: var(--font-display);">3D proof of concept</h1>
+		<p class="muted">Смешанные размеры 6/8/10/12 mm, материалы и selection.</p>
+		<div style="height: min(70vh, 640px); border: 1px solid var(--line); border-radius: 1rem; overflow: hidden;">
+			<BraceletPoc client:only="svelte" />
+		</div>
+	</section>
+</BaseLayout>

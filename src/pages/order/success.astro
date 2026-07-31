@@ -1,0 +1,22 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const number = Astro.url.searchParams.get('number') ?? '';
+---
+
+<BaseLayout title="Заказ принят — GemKBR">
+	<section class="stack panel" style="max-width: 40rem; margin-top: 2rem;">
+		<h1 style="font-family: var(--font-display); margin: 0;">Заказ принят</h1>
+		{
+			number ? (
+				<p>
+					Номер заказа: <strong>{number}</strong>
+				</p>
+			) : null
+		}
+		<p>
+			Заказ принят. Мы свяжемся с вами для подтверждения заказа и оплаты.
+		</p>
+		<p><a class="btn" href="/">На главную</a></p>
+	</section>
+</BaseLayout>

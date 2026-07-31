@@ -1,0 +1,59 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { createServices } from '../server/container';
+import { getAuth } from '../server/auth/auth';
+import { formatRub } from '../lib/money';
+import RemoveCartItemButton from '../components/svelte/RemoveCartItemButton.svelte';
+
+const auth = getAuth();
+const session = await auth.api.getSession({ headers: Astro.request.headers });
+const services = createServices();
+const guestToken = Astro.cookies.get('cart_token')?.value;
+const cart = session?.user
+	? await services.cartsRepo.getByUserId(session.user.id)
+	: guestToken
+		? await services.cartsRepo.getByGuestToken(guestToken)
+		: null;
+
+const items = cart?.items ?? [];
+const total = items.reduce((sum, item) => sum + item.unitPriceMinor * item.qty, 0);
+---
+
+<BaseLayout title="Корзина — GemKBR">
+	<section class="stack" style="max-width: 48rem;">
+		<h1 style="font-family: var(--font-display); font-size: clamp(2rem, 6vw, 3rem);">Корзина</h1>
+		{
+			items.length === 0 ? (
+				<p class="muted">
+					Корзина пуста. <a href="/designer/bracelet">Собрать браслет</a>
+				</p>
+			) : (
+				<>
+					<ul class="stack" style="list-style: none; padding: 0; margin: 0;">
+						{items.map((item) => (
+							<li class="panel" style="display: grid; gap: 0.4rem;">
+								<strong>{item.title}</strong>
+								{item.kind === 'custom_bracelet' && item.design ? (
+									<>
+										<p class="muted">
+											Размер {item.design.targetWristMm} мм · {item.design.items.length} элементов
+										</p>
+										<p>
+											<a href="/designer/bracelet">Редактировать дизайн</a>
+										</p>
+									</>
+								) : null}
+								<p>
+									{item.qty} × {formatRub(item.unitPriceMinor)}
+								</p>
+								<RemoveCartItemButton client:load itemId={item.id} />
+							</li>
+						))}
+					</ul>
+					<p style="font-size: 1.3rem; font-weight: 700;">Итого: {formatRub(total)}</p>
+					<a class="btn" href="/checkout">Оформить заказ</a>
+				</>
+			)
+		}
+	</section>
+</BaseLayout>

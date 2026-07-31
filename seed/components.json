@@ -1,0 +1,523 @@
+[
+  {
+    "id": "comp-hetian-white-jade",
+    "slug": "hetian-white-jade",
+    "name": "Хотянский белый нефрит",
+    "kind": "bead",
+    "material": "crystal",
+    "colorGroup": "clear-white",
+    "imageUrl": "/catalog/crystal-single-1019/hetian-white-jade.webp",
+    "tags": [
+      "stone",
+      "crystal",
+      "clear-white"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-white-rabbit-hair-quartz",
+    "slug": "white-rabbit-hair-quartz",
+    "name": "Белый кварц «волосатик»",
+    "kind": "bead",
+    "material": "crystal",
+    "colorGroup": "clear-white",
+    "imageUrl": "/catalog/crystal-single-1019/white-rabbit-hair-quartz.webp",
+    "tags": [
+      "stone",
+      "crystal",
+      "clear-white"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-white-phantom-quartz",
+    "slug": "white-phantom-quartz",
+    "name": "Белый фантомный кварц",
+    "kind": "bead",
+    "material": "crystal",
+    "colorGroup": "clear-white",
+    "imageUrl": "/catalog/crystal-single-1019/white-phantom-quartz.webp",
+    "tags": [
+      "stone",
+      "crystal",
+      "clear-white"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-white-moonstone",
+    "slug": "white-moonstone",
+    "name": "Белый лунный камень",
+    "kind": "bead",
+    "material": "crystal",
+    "colorGroup": "clear-white",
+    "imageUrl": "/catalog/crystal-single-1019/white-moonstone.webp",
+    "tags": [
+      "stone",
+      "crystal",
+      "clear-white"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-clear-quartz",
+    "slug": "clear-quartz",
+    "name": "Горный хрусталь",
+    "kind": "bead",
+    "material": "crystal",
+    "colorGroup": "clear-white",
+    "imageUrl": "/catalog/crystal-single-1019/clear-quartz.webp",
+    "tags": [
+      "stone",
+      "crystal",
+      "clear-white"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-white-chalcedony",
+    "slug": "white-chalcedony",
+    "name": "Белый халцедон",
+    "kind": "bead",
+    "material": "crystal",
+    "colorGroup": "clear-white",
+    "imageUrl": "/catalog/crystal-single-1019/white-chalcedony.webp",
+    "tags": [
+      "stone",
+      "crystal",
+      "clear-white"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-white-fluorite",
+    "slug": "white-fluorite",
+    "name": "Белый флюорит",
+    "kind": "bead",
+    "material": "crystal",
+    "colorGroup": "clear-white",
+    "imageUrl": "/catalog/crystal-single-1019/white-fluorite.webp",
+    "tags": [
+      "stone",
+      "crystal",
+      "clear-white"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-white-azeztulite",
+    "slug": "white-azeztulite",
+    "name": "Белый азезулит",
+    "kind": "bead",
+    "material": "crystal",
+    "colorGroup": "clear-white",
+    "imageUrl": "/catalog/crystal-single-1019/white-azeztulite.webp",
+    "tags": [
+      "stone",
+      "crystal",
+      "clear-white"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-silver-rutilated-quartz",
+    "slug": "silver-rutilated-quartz",
+    "name": "Серебристый волосатик",
+    "kind": "bead",
+    "material": "crystal",
+    "colorGroup": "clear-white",
+    "imageUrl": "/catalog/crystal-single-1019/silver-rutilated-quartz.webp",
+    "tags": [
+      "stone",
+      "crystal",
+      "clear-white"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-snowflake-phantom-quartz",
+    "slug": "snowflake-phantom-quartz",
+    "name": "Снежный фантомный кварц",
+    "kind": "bead",
+    "material": "crystal",
+    "colorGroup": "clear-white",
+    "imageUrl": "/catalog/crystal-single-1019/snowflake-phantom-quartz.webp",
+    "tags": [
+      "stone",
+      "crystal",
+      "clear-white"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-madagascar-rose-quartz",
+    "slug": "madagascar-rose-quartz",
+    "name": "Мадагаскарский розовый кварц",
+    "kind": "bead",
+    "material": "crystal",
+    "colorGroup": "pink",
+    "imageUrl": "/catalog/crystal-single-1019/madagascar-rose-quartz.webp",
+    "tags": [
+      "stone",
+      "crystal",
+      "pink"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-red-rutilated-quartz",
+    "slug": "red-rutilated-quartz",
+    "name": "Красный волосатик",
+    "kind": "bead",
+    "material": "crystal",
+    "colorGroup": "red",
+    "imageUrl": "/catalog/crystal-single-1019/red-rutilated-quartz.webp",
+    "tags": [
+      "stone",
+      "crystal",
+      "red"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-red-fire-quartz",
+    "slug": "red-fire-quartz",
+    "name": "Красный огненный кварц",
+    "kind": "bead",
+    "material": "crystal",
+    "colorGroup": "red",
+    "imageUrl": "/catalog/crystal-single-1019/red-fire-quartz.webp",
+    "tags": [
+      "stone",
+      "crystal",
+      "red"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-golden-rutilated-quartz",
+    "slug": "golden-rutilated-quartz",
+    "name": "Золотой волосатик",
+    "kind": "bead",
+    "material": "crystal",
+    "colorGroup": "yellow-gold",
+    "imageUrl": "/catalog/crystal-single-1019/golden-rutilated-quartz.webp",
+    "tags": [
+      "stone",
+      "crystal",
+      "yellow-gold"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-gold-tiger-eye",
+    "slug": "gold-tiger-eye",
+    "name": "Золотой тигровый глаз",
+    "kind": "bead",
+    "material": "crystal",
+    "colorGroup": "yellow-gold",
+    "imageUrl": "/catalog/crystal-single-1019/gold-tiger-eye.webp",
+    "tags": [
+      "stone",
+      "crystal",
+      "yellow-gold"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-golden-luck-stone",
+    "slug": "golden-luck-stone",
+    "name": "Золотой камень удачи",
+    "kind": "bead",
+    "material": "crystal",
+    "colorGroup": "yellow-gold",
+    "imageUrl": "/catalog/crystal-single-1019/golden-luck-stone.webp",
+    "tags": [
+      "stone",
+      "crystal",
+      "yellow-gold"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-golden-titanium-rutilated-quartz",
+    "slug": "golden-titanium-rutilated-quartz",
+    "name": "Золотой титановый волосатик",
+    "kind": "bead",
+    "material": "crystal",
+    "colorGroup": "yellow-gold",
+    "imageUrl": "/catalog/crystal-single-1019/golden-titanium-rutilated-quartz.webp",
+    "tags": [
+      "stone",
+      "crystal",
+      "yellow-gold"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-titanium-flower-quartz",
+    "slug": "titanium-flower-quartz",
+    "name": "Титановый цветочный кварц",
+    "kind": "bead",
+    "material": "crystal",
+    "colorGroup": "yellow-gold",
+    "imageUrl": "/catalog/crystal-single-1019/titanium-flower-quartz.webp",
+    "tags": [
+      "stone",
+      "crystal",
+      "yellow-gold"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-yellow-rabbit-hair-quartz",
+    "slug": "yellow-rabbit-hair-quartz",
+    "name": "Жёлтый кварц «волосатик»",
+    "kind": "bead",
+    "material": "crystal",
+    "colorGroup": "yellow-gold",
+    "imageUrl": "/catalog/crystal-single-1019/yellow-rabbit-hair-quartz.webp",
+    "tags": [
+      "stone",
+      "crystal",
+      "yellow-gold"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-yellow-tower-quartz",
+    "slug": "yellow-tower-quartz",
+    "name": "Жёлтый башенный кварц",
+    "kind": "bead",
+    "material": "crystal",
+    "colorGroup": "yellow-gold",
+    "imageUrl": "/catalog/crystal-single-1019/yellow-tower-quartz.webp",
+    "tags": [
+      "stone",
+      "crystal",
+      "yellow-gold"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-citrine",
+    "slug": "citrine",
+    "name": "Цитрин",
+    "kind": "bead",
+    "material": "crystal",
+    "colorGroup": "yellow-gold",
+    "imageUrl": "/catalog/crystal-single-1019/citrine.webp",
+    "tags": [
+      "stone",
+      "crystal",
+      "yellow-gold"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-yellow-fire-quartz",
+    "slug": "yellow-fire-quartz",
+    "name": "Жёлтый огненный кварц",
+    "kind": "bead",
+    "material": "crystal",
+    "colorGroup": "yellow-gold",
+    "imageUrl": "/catalog/crystal-single-1019/yellow-fire-quartz.webp",
+    "tags": [
+      "stone",
+      "crystal",
+      "yellow-gold"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-yellow-fluorite",
+    "slug": "yellow-fluorite",
+    "name": "Жёлтый флюорит",
+    "kind": "bead",
+    "material": "crystal",
+    "colorGroup": "yellow-gold",
+    "imageUrl": "/catalog/crystal-single-1019/yellow-fluorite.webp",
+    "tags": [
+      "stone",
+      "crystal",
+      "yellow-gold"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-yellow-tiger-eye",
+    "slug": "yellow-tiger-eye",
+    "name": "Жёлтый тигровый глаз",
+    "kind": "bead",
+    "material": "crystal",
+    "colorGroup": "yellow-gold",
+    "imageUrl": "/catalog/crystal-single-1019/yellow-tiger-eye.webp",
+    "tags": [
+      "stone",
+      "crystal",
+      "yellow-gold"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-prehnite",
+    "slug": "prehnite",
+    "name": "Пренит",
+    "kind": "bead",
+    "material": "crystal",
+    "colorGroup": "green",
+    "imageUrl": "/catalog/crystal-single-1019/prehnite.webp",
+    "tags": [
+      "stone",
+      "crystal",
+      "green"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-blue-moonstone",
+    "slug": "blue-moonstone",
+    "name": "Голубой лунный камень",
+    "kind": "bead",
+    "material": "crystal",
+    "colorGroup": "blue",
+    "imageUrl": "/catalog/crystal-single-1019/blue-moonstone.webp",
+    "tags": [
+      "stone",
+      "crystal",
+      "blue"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-blue-tiger-eye",
+    "slug": "blue-tiger-eye",
+    "name": "Синий тигровый глаз",
+    "kind": "bead",
+    "material": "crystal",
+    "colorGroup": "blue",
+    "imageUrl": "/catalog/crystal-single-1019/blue-tiger-eye.webp",
+    "tags": [
+      "stone",
+      "crystal",
+      "blue"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-bolivian-amethyst",
+    "slug": "bolivian-amethyst",
+    "name": "Боливийский аметист",
+    "kind": "bead",
+    "material": "crystal",
+    "colorGroup": "purple",
+    "imageUrl": "/catalog/crystal-single-1019/bolivian-amethyst.webp",
+    "tags": [
+      "stone",
+      "crystal",
+      "purple"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-uruguay-amethyst",
+    "slug": "uruguay-amethyst",
+    "name": "Уругвайский аметист",
+    "kind": "bead",
+    "material": "crystal",
+    "colorGroup": "purple",
+    "imageUrl": "/catalog/crystal-single-1019/uruguay-amethyst.webp",
+    "tags": [
+      "stone",
+      "crystal",
+      "purple"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-brazilian-amethyst",
+    "slug": "brazilian-amethyst",
+    "name": "Бразильский аметист",
+    "kind": "bead",
+    "material": "crystal",
+    "colorGroup": "purple",
+    "imageUrl": "/catalog/crystal-single-1019/brazilian-amethyst.webp",
+    "tags": [
+      "stone",
+      "crystal",
+      "purple"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-auralite-23",
+    "slug": "auralite-23",
+    "name": "Ауралит 23",
+    "kind": "bead",
+    "material": "crystal",
+    "colorGroup": "purple",
+    "imageUrl": "/catalog/crystal-single-1019/auralite-23.webp",
+    "tags": [
+      "stone",
+      "crystal",
+      "purple"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-ametrine",
+    "slug": "ametrine",
+    "name": "Аметрин",
+    "kind": "bead",
+    "material": "crystal",
+    "colorGroup": "purple",
+    "imageUrl": "/catalog/crystal-single-1019/ametrine.webp",
+    "tags": [
+      "stone",
+      "crystal",
+      "purple"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-super-seven",
+    "slug": "super-seven",
+    "name": "Супер Севен",
+    "kind": "bead",
+    "material": "crystal",
+    "colorGroup": "purple",
+    "imageUrl": "/catalog/crystal-single-1019/super-seven.webp",
+    "tags": [
+      "stone",
+      "crystal",
+      "purple"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-silver-spacer",
+    "slug": "silver-spacer",
+    "name": "Серебряный разделитель",
+    "kind": "spacer",
+    "material": "metal",
+    "colorGroup": "silver",
+    "imageUrl": "",
+    "tags": [
+      "metal"
+    ],
+    "active": true
+  },
+  {
+    "id": "comp-heart-charm",
+    "slug": "heart-charm",
+    "name": "Подвеска-сердце",
+    "kind": "charm",
+    "material": "metal",
+    "colorGroup": "gold",
+    "imageUrl": "",
+    "tags": [
+      "charm"
+    ],
+    "active": true
+  }
+]

@@ -1,0 +1,33 @@
+services:
+  app:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    ports:
+      - "4321:4321"
+    environment:
+      NODE_ENV: production
+      HOST: 0.0.0.0
+      PORT: 4321
+      DOMAIN: localhost
+      PUBLIC_SITE_URL: http://localhost:4321
+      DATABASE_PATH: /data/app.db
+      DATA_DIR: /data
+      PREVIEWS_DIR: /data/previews
+      BETTER_AUTH_SECRET: local-dev-secret-change-me-please
+      BETTER_AUTH_URL: http://localhost:4321
+      ORDER_NOTIFIER_MODE: console
+    volumes:
+      - gemkbr_data_local:/data
+
+  caddy:
+    image: caddy:2.9-alpine
+    ports:
+      - "8080:80"
+    volumes:
+      - ./Caddyfile.local:/etc/caddy/Caddyfile:ro
+    depends_on:
+      - app
+
+volumes:
+  gemkbr_data_local:

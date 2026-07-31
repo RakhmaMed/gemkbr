@@ -1,0 +1,11 @@
+[
+  {
+    "id": "elastic-bracelet",
+    "name": "Эластичный браслет",
+    "fitAllowanceMm": 8,
+    "minWristMm": 130,
+    "maxWristMm": 220,
+    "configJson": "{}",
+    "active": true
+  }
+]

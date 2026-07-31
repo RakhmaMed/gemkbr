@@ -1,0 +1,60 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AuthForms from '../components/svelte/AuthForms.svelte';
+import { getAuth } from '../server/auth/auth';
+import { createServices } from '../server/container';
+import { formatRub } from '../lib/money';
+
+const auth = getAuth();
+const session = await auth.api.getSession({ headers: Astro.request.headers });
+const services = createServices();
+const designs = session?.user ? await services.designsRepo.listByUser(session.user.id) : [];
+const orders = session?.user ? await services.ordersRepo.listByUser(session.user.id) : [];
+---
+
+<BaseLayout title="Аккаунт — GemKBR">
+	<section class="stack" style="max-width: 42rem;">
+		<h1 style="font-family: var(--font-display); font-size: clamp(2rem, 6vw, 3rem);">Аккаунт</h1>
+		{
+			session?.user ? (
+				<>
+					<p>
+						Вы вошли как <strong>{session.user.name}</strong>
+					</p>
+					<form method="POST" action="/api/auth/sign-out">
+						<button class="btn btn-ghost" type="submit">Выйти</button>
+					</form>
+
+					<h2>Сохранённые дизайны</h2>
+					{designs.length === 0 ? (
+						<p class="muted">Пока нет сохранённых дизайнов.</p>
+					) : (
+						<ul>
+							{designs.map((design) => (
+								<li>
+									{design.design.items.length} элементов · {formatRub(design.priceMinorCached)} ·{' '}
+									{design.targetWristMm} мм
+								</li>
+							))}
+						</ul>
+					)}
+
+					<h2>История заказов</h2>
+					{orders.length === 0 ? (
+						<p class="muted">Заказов пока нет.</p>
+					) : (
+						<ul>
+							{orders.map((order) => (
+								<li>
+									{order.number} · {order.status} · {formatRub(order.totalMinor)}
+								</li>
+							))}
+						</ul>
+					)}
+				</>
+			) : (
+				<AuthForms client:load />
+			)
+		}
+	</section>
+</BaseLayout>

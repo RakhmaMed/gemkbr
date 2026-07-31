@@ -1,0 +1,31 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BraceletDesigner from '../../features/bracelet-designer/ui/BraceletDesigner.svelte';
+import { createServices } from '../../server/container';
+
+const { catalog } = createServices();
+const [components, variants, templates] = await Promise.all([
+	catalog.listActiveComponents(),
+	catalog.listActiveComponentVariants(),
+	catalog.listBraceletTemplates(),
+]);
+const template = templates[0];
+---
+
+<BaseLayout
+	title="Конструктор браслетов — GemKBR"
+	description="Соберите браслет в 3D: бусины, спейсеры, шармы, размер и цена в реальном времени."
+>
+	{
+		template ? (
+			<BraceletDesigner
+				client:only="svelte"
+				components={components}
+				variants={variants}
+				template={template}
+			/>
+		) : (
+			<p>Каталог компонентов ещё не загружен. Выполните pnpm db:seed.</p>
+		)
+	}
+</BaseLayout>

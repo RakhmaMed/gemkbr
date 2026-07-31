@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CheckoutForm from '../components/svelte/CheckoutForm.svelte';
+import { createServices } from '../server/container';
+import { getAuth } from '../server/auth/auth';
+import { formatRub } from '../lib/money';
+
+const auth = getAuth();
+const session = await auth.api.getSession({ headers: Astro.request.headers });
+const services = createServices();
+const guestToken = Astro.cookies.get('cart_token')?.value;
+const cart = session?.user
+	? await services.cartsRepo.getByUserId(session.user.id)
+	: guestToken
+		? await services.cartsRepo.getByGuestToken(guestToken)
+		: null;
+
+const items = cart?.items ?? [];
+const total = items.reduce((sum, item) => sum + item.unitPriceMinor * item.qty, 0);
+
+if (items.length === 0) {
+	return Astro.redirect('/cart');
+}
+---
+
+<BaseLayout title="Оформление заказа — GemKBR">
+	<section class="stack" style="max-width: 36rem;">
+		<h1 style="font-family: var(--font-display); font-size: clamp(2rem, 6vw, 3rem);">Оформление</h1>
+		<p class="muted">Итого к оплате после подтверждения: {formatRub(total)}</p>
+		<p class="muted">
+			Онлайн-оплата в MVP не подключена. После заказа мы свяжемся с вами для подтверждения и оплаты.
+		</p>
+		<CheckoutForm client:load />
+	</section>
+</BaseLayout>

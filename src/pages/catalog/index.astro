@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { createServices } from '../../server/container';
+import { formatRub } from '../../lib/money';
+
+const { catalog } = createServices();
+const products = await catalog.listActiveProducts();
+---
+
+<BaseLayout title="Каталог — GemKBR" description="Готовые изделия ручной работы GemKBR">
+	<section class="stack">
+		<h1 style="font-family: var(--font-display); font-size: clamp(2rem, 6vw, 3.5rem);">Каталог</h1>
+		<p class="muted">Готовые изделия. Для сборки своего браслета откройте конструктор.</p>
+		<div class="grid-products">
+			{
+				products.map((product) => {
+					const price = product.variants[0]?.priceMinor ?? 0;
+					return (
+						<article class="product-card">
+							<a href={`/products/${product.slug}`}>
+								<h2>{product.name}</h2>
+								<p class="muted">{product.description}</p>
+								<p>{formatRub(price)}</p>
+							</a>
+						</article>
+					);
+				})
+			}
+		</div>
+		<p><a class="btn" href="/designer/bracelet">Собрать браслет</a></p>
+	</section>
+</BaseLayout>

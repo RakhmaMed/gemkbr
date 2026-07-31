@@ -1,0 +1,14 @@
+[
+  {
+    "id": "cat-bracelets",
+    "slug": "bracelets",
+    "name": "Браслеты",
+    "sortOrder": 1
+  },
+  {
+    "id": "cat-bags",
+    "slug": "bags",
+    "name": "Сумки",
+    "sortOrder": 2
+  }
+]

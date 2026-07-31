@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /account
+Disallow: /checkout
+Disallow: /api/
+Disallow: /dev/
+Disallow: /health/
+
+Sitemap: https://gemkbr.ru/sitemap.xml

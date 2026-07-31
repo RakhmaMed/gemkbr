@@ -1,0 +1,36 @@
+[
+  {
+    "id": "prod-ready-moonstone",
+    "slug": "moonstone-bracelet",
+    "name": "Браслет Moonstone",
+    "description": "Готовый браслет из лунного камня ручной сборки.",
+    "categoryId": "cat-bracelets",
+    "active": true,
+    "variants": [
+      {
+        "id": "pv-moonstone-default",
+        "sku": "READY-MOON-165",
+        "priceMinor": 390000,
+        "stockQuantity": 5,
+        "active": true
+      }
+    ]
+  },
+  {
+    "id": "prod-ready-obsidian",
+    "slug": "obsidian-bracelet",
+    "name": "Браслет Obsidian",
+    "description": "Минималистичный браслет из обсидиана.",
+    "categoryId": "cat-bracelets",
+    "active": true,
+    "variants": [
+      {
+        "id": "pv-obsidian-default",
+        "sku": "READY-OBS-165",
+        "priceMinor": 320000,
+        "stockQuantity": 8,
+        "active": true
+      }
+    ]
+  }
+]

@@ -1,0 +1,20 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1785110646123,
+      "tag": "0000_lowly_famine",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1785450000000,
+      "tag": "0001_add_component_image_url",
+      "breakpoints": true
+    }
+  ]
+}
