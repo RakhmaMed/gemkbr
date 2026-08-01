@@ -56,15 +56,6 @@
 	} = $props();
 
 	const DRAFT_KEY = 'gemkbr.bracelet.draft.v1';
-	const crystalColorGroups = [
-		'clear-white',
-		'pink',
-		'red',
-		'yellow-gold',
-		'green',
-		'blue',
-		'purple',
-	] as const;
 	const colorTabs = [
 		{ id: 'in-use', label: 'В использовании' },
 		{ id: 'clear-white', label: 'Прозрачные и белые' },
@@ -74,7 +65,11 @@
 		{ id: 'green', label: 'Зелёные' },
 		{ id: 'blue', label: 'Синие' },
 		{ id: 'purple', label: 'Фиолетовые' },
-		{ id: 'other', label: 'Прочее' },
+		{ id: 'black-grey', label: 'Чёрные и серые' },
+		{ id: 'earth-tones', label: 'Земляные оттенки' },
+		{ id: 'pearl', label: 'Жемчуг' },
+		{ id: 'spacers', label: 'Разделители' },
+		{ id: 'charms', label: 'Шармы' },
 	] as const;
 	type ColorTab = (typeof colorTabs)[number]['id'];
 
@@ -176,13 +171,16 @@
 		return variants.filter((variant) => {
 			const component = componentMap.get(variant.componentId);
 			if (!component) return false;
-			const isOther =
-				component.kind === 'spacer' ||
-				component.kind === 'charm' ||
-				!crystalColorGroups.includes(component.colorGroup as (typeof crystalColorGroups)[number]);
 			if (colorFilter === 'in-use') {
 				if (!usedVariantIds.has(variant.variantId)) return false;
-			} else if (colorFilter === 'other' ? !isOther : component.colorGroup !== colorFilter) {
+			} else if (colorFilter === 'spacers') {
+				if (component.kind !== 'spacer') return false;
+			} else if (colorFilter === 'charms') {
+				if (component.kind !== 'charm') return false;
+			} else if (
+				component.kind !== 'bead' ||
+				component.colorGroup !== colorFilter
+			) {
 				return false;
 			}
 			const hay = `${component.name} ${variant.sku} ${component.colorGroup}`.toLowerCase();

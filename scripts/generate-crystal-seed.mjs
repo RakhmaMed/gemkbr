@@ -31,9 +31,6 @@ const GROUPS = [
 			{ slug: 'white-azeztulite', name: 'Белый азезулит' },
 			{ slug: 'silver-rutilated-quartz', name: 'Серебристый волосатик' },
 			{ slug: 'snowflake-phantom-quartz', name: 'Снежный фантомный кварц' },
-			{ slug: 'white-pearl', name: 'Белый жемчуг' },
-			{ slug: 'smoky-quartz', name: 'Дымчатый кварц' },
-			{ slug: 'four-seasons-phantom-quartz', name: 'Фантомный кварц «четыре сезона»' },
 		],
 	},
 	{
@@ -45,7 +42,6 @@ const GROUPS = [
 		crystals: [
 			{ slug: 'red-rutilated-quartz', name: 'Красный волосатик' },
 			{ slug: 'red-fire-quartz', name: 'Красный огненный кварц' },
-			{ slug: 'fire-quartz-phantom', name: 'Фантомный огненный кварц' },
 		],
 	},
 	{
@@ -96,6 +92,29 @@ const GROUPS = [
 			{ slug: 'super-seven', name: 'Супер Севен' },
 		],
 	},
+	{
+		colorGroup: 'black-grey',
+		crystals: [
+			{ slug: 'black-dragon-crystal', name: 'Чёрный драконий кристалл' },
+			{ slug: 'black-gold-super-seven', name: 'Чёрное золото Супер Севен' },
+			{ slug: 'black-quartz', name: 'Чёрный кварц' },
+			{ slug: 'black-obsidian', name: 'Чёрный обсидиан' },
+			{ slug: 'silver-obsidian', name: 'Серебристый обсидиан' },
+			{ slug: 'gold-obsidian', name: 'Золотой обсидиан' },
+		],
+	},
+	{
+		colorGroup: 'earth-tones',
+		crystals: [
+			{ slug: 'four-seasons-phantom-quartz', name: 'Фантомный кварц «четыре сезона»' },
+			{ slug: 'fire-quartz-phantom', name: 'Фантомный огненный кварц' },
+			{ slug: 'smoky-quartz', name: 'Дымчатый кварц' },
+		],
+	},
+	{
+		colorGroup: 'pearl',
+		crystals: [{ slug: 'white-pearl', name: 'Белый жемчуг' }],
+	},
 ];
 
 /**
@@ -115,29 +134,30 @@ const GROUPS = [
 const ASTRIS = [
 	{
 		slug: 'sCO61_1',
-		name: 'Овальный фантомный кварц',
-		kind: 'bead',
-		material: 'crystal',
-		colorGroup: 'clear-white',
+		name: 'Серебряное маленькое кольцо',
+		kind: 'spacer',
+		material: 'metal',
+		colorGroup: 'silver',
 		diameterMm: 8,
-		axialLengthMm: 14,
-		priceMinor: 36000,
-		visualPresetId: 'polished-stone',
+		axialLengthMm: 2.3,
+		priceMinor: 14000,
+		visualPresetId: 'metal',
 	},
+
 	{
 		slug: 'hdyBj_1',
-		name: 'Золотой цилиндрический разделитель',
+		name: 'Золотое маленькое кольцо',
 		kind: 'spacer',
 		material: 'metal',
 		colorGroup: 'gold',
 		diameterMm: 8,
-		axialLengthMm: 12,
-		priceMinor: 18000,
+		axialLengthMm: 2.3,
+		priceMinor: 14000,
 		visualPresetId: 'metal',
 	},
 	{
 		slug: 'N8iQV_1',
-		name: 'Золотой геометрический разделитель',
+		name: 'Разделитель «узор удачи»',
 		kind: 'spacer',
 		material: 'metal',
 		colorGroup: 'gold',
@@ -148,7 +168,7 @@ const ASTRIS = [
 	},
 	{
 		slug: '4f7eb6d1-77e8-4d6c-b7c2-e97cae220bd9',
-		name: 'Гранёный стеклянный цилиндр',
+		name: 'Кручёное кольцо-пончик',
 		kind: 'spacer',
 		material: 'crystal',
 		colorGroup: 'clear-white',
@@ -313,7 +333,7 @@ const ASTRIS = [
 	},
 	{
 		slug: 'Z9tog_1',
-		name: 'Разделитель «цветок» с кристаллами',
+		name: 'Цветок с фианитами',
 		kind: 'spacer',
 		material: 'metal',
 		colorGroup: 'silver',
@@ -324,8 +344,8 @@ const ASTRIS = [
 	},
 	{
 		slug: 'SMW5r_1',
-		name: 'Бусина клуазоне сине-голубая',
-		kind: 'bead',
+		name: 'Клуазоне «шар удачи»',
+		kind: 'spacer',
 		material: 'metal',
 		colorGroup: 'gold',
 		diameterMm: 10,
@@ -335,8 +355,8 @@ const ASTRIS = [
 	},
 	{
 		slug: 'DjR08_1',
-		name: 'Золотая ажурная бусина с кристаллами',
-		kind: 'bead',
+		name: 'Ажурный шар удачи',
+		kind: 'spacer',
 		material: 'metal',
 		colorGroup: 'gold',
 		diameterMm: 10,
@@ -346,8 +366,8 @@ const ASTRIS = [
 	},
 	{
 		slug: 'v9CWs_1',
-		name: 'Серебряная ажурная бусина',
-		kind: 'bead',
+		name: 'Ажурная филигрань',
+		kind: 'spacer',
 		material: 'metal',
 		colorGroup: 'silver',
 		diameterMm: 10,
@@ -357,7 +377,7 @@ const ASTRIS = [
 	},
 	{
 		slug: 'TiqGy_1',
-		name: 'Золотая бусина с бантиками',
+		name: 'Ажурный шар удачи с бантами',
 		kind: 'spacer',
 		material: 'metal',
 		colorGroup: 'gold',
@@ -368,7 +388,7 @@ const ASTRIS = [
 	},
 	{
 		slug: 'wmMtQ_1',
-		name: 'Серебряный крест',
+		name: 'Тибетский крест-цветок',
 		kind: 'spacer',
 		material: 'metal',
 		colorGroup: 'silver',
@@ -379,8 +399,8 @@ const ASTRIS = [
 	},
 	{
 		slug: '3iKC8_1',
-		name: 'Серебряная плетёная бусина',
-		kind: 'bead',
+		name: 'Серебряная гортензия',
+		kind: 'spacer',
 		material: 'metal',
 		colorGroup: 'silver',
 		diameterMm: 10,
@@ -390,8 +410,8 @@ const ASTRIS = [
 	},
 	{
 		slug: '49hln_1',
-		name: 'Кубическая бусина с фианитами',
-		kind: 'bead',
+		name: 'Алмазный куб',
+		kind: 'spacer',
 		material: 'metal',
 		colorGroup: 'silver',
 		diameterMm: 10,
@@ -401,7 +421,7 @@ const ASTRIS = [
 	},
 	{
 		slug: 'YQlCK_1',
-		name: 'Бусина-бочонок «звёздная пыль»',
+		name: 'Ручка удачи',
 		kind: 'spacer',
 		material: 'metal',
 		colorGroup: 'silver',
@@ -412,7 +432,7 @@ const ASTRIS = [
 	},
 	{
 		slug: 'ehyNk_1',
-		name: 'Серебряный ажурный разделитель',
+		name: 'Кружевная дорожка (серебро)',
 		kind: 'spacer',
 		material: 'metal',
 		colorGroup: 'silver',
@@ -423,7 +443,7 @@ const ASTRIS = [
 	},
 	{
 		slug: '3jXyr_1',
-		name: 'Золотой разделитель с кристаллами',
+		name: 'Кружевная дорожка (золото)',
 		kind: 'spacer',
 		material: 'metal',
 		colorGroup: 'gold',
@@ -434,7 +454,7 @@ const ASTRIS = [
 	},
 	{
 		slug: 'PnqVF_1',
-		name: 'Золотой цилиндр с узором',
+		name: 'Ом мани падме хум (золото)',
 		kind: 'spacer',
 		material: 'metal',
 		colorGroup: 'gold',
@@ -445,7 +465,7 @@ const ASTRIS = [
 	},
 	{
 		slug: 'eYf3D_1',
-		name: 'Серебряный цилиндр с узором',
+		name: 'Ом мани падме хум (серебро)',
 		kind: 'spacer',
 		material: 'metal',
 		colorGroup: 'silver',
@@ -456,7 +476,7 @@ const ASTRIS = [
 	},
 	{
 		slug: 'U80ue_1',
-		name: 'Широкий разделитель с кристаллами',
+		name: 'Двухслойный сверкающий с фианитами',
 		kind: 'spacer',
 		material: 'metal',
 		colorGroup: 'silver',
@@ -467,7 +487,7 @@ const ASTRIS = [
 	},
 	{
 		slug: 'I5ft3_1',
-		name: 'Разделитель с двумя прямоугольными кристаллами',
+		name: 'Двухслойный с гранёными фианитами',
 		kind: 'spacer',
 		material: 'metal',
 		colorGroup: 'silver',
@@ -478,7 +498,7 @@ const ASTRIS = [
 	},
 	{
 		slug: 'o9I7t_1',
-		name: 'Серебряный бочонок с рельефом',
+		name: 'Тибетский свиток',
 		kind: 'spacer',
 		material: 'metal',
 		colorGroup: 'silver',
@@ -489,7 +509,7 @@ const ASTRIS = [
 	},
 	{
 		slug: 'qQYIC_1',
-		name: 'Серебряная роза',
+		name: 'Венок из роз',
 		kind: 'spacer',
 		material: 'metal',
 		colorGroup: 'silver',
@@ -500,7 +520,7 @@ const ASTRIS = [
 	},
 	{
 		slug: 'vZRBe_1',
-		name: 'Шарм с зелёным камнем и зернением',
+		name: 'Цветное колесо с фианитами (серебро)',
 		kind: 'spacer',
 		material: 'metal',
 		colorGroup: 'silver',
@@ -511,7 +531,7 @@ const ASTRIS = [
 	},
 	{
 		slug: '8SQMx_1',
-		name: 'Шарм из розового золота с камнями',
+		name: 'Цветное колесо с фианитами (золото)',
 		kind: 'spacer',
 		material: 'metal',
 		colorGroup: 'gold',
@@ -555,7 +575,7 @@ const ASTRIS = [
 	},
 	{
 		slug: '6kyrV_1',
-		name: 'Бусина «шишка» / чешуя',
+		name: 'Чешуя дракона',
 		kind: 'spacer',
 		material: 'metal',
 		colorGroup: 'silver',
@@ -621,25 +641,25 @@ const ASTRIS = [
 	},
 	{
 		slug: 'Y258K_1',
-		name: 'Чёрно-белый камень',
-		kind: 'bead',
-		material: 'crystal',
-		colorGroup: 'clear-white',
-		diameterMm: 10,
-		axialLengthMm: 10,
-		priceMinor: 28000,
-		visualPresetId: 'polished-stone',
+		name: 'Серебряная маленькая бусина',
+		kind: 'spacer',
+		material: 'metal',
+		colorGroup: 'silver',
+		diameterMm: 6,
+		axialLengthMm: 6,
+		priceMinor: 14000,
+		visualPresetId: 'metal',
 	},
 	{
 		slug: 'yMTQ9_1',
-		name: 'yMTQ9_1',
-		kind: 'bead',
-		material: 'crystal',
-		colorGroup: 'yellow-gold',
+		name: 'Золотая маленькая бусина',
+		kind: 'spacer',
+		material: 'metal',
+		colorGroup: 'gold',
 		diameterMm: 10,
 		axialLengthMm: 10,
 		priceMinor: 28000,
-		visualPresetId: 'polished-stone',
+		visualPresetId: 'metal',
 	},
 ];
 
