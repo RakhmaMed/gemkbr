@@ -4,11 +4,12 @@
 	import type { ComponentImageVisual, LayoutPose } from '../../../domain/bracelet';
 	import { angleFromPoint, insertIndexForAngle } from './circle-order';
 	import {
+		anchorsAtTop,
 		contentCenterInNodePct,
 		contentFillOfNode,
 		displayNodeMm,
-		radialRotationDeg,
-		shouldRadialRotate,
+		itemRotationDeg,
+		unwrapDegrees,
 	} from './photo-layout';
 
 	export type CanvasBead = {
@@ -75,7 +76,9 @@
 		let max = 0;
 		for (const item of items) {
 			const [x, , z] = item.pose.position;
-			const reach = Math.hypot(x, z) + displayDiameter(item) / 2;
+			const node = displayDiameter(item);
+			// Charms hang outward from the clasp, so nearly the full node extends past the cord.
+			const reach = Math.hypot(x, z) + (anchorsAtTop(item.kind) ? node : node / 2);
 			if (reach > max) max = reach;
 		}
 		return Math.max(max, 12);
@@ -103,14 +106,15 @@
 	}
 
 	function nodeRotationDeg(item: CanvasBead, x: number, z: number): number {
-		if (!shouldRadialRotate(item.kind)) return 0;
-		return radialRotationDeg(x, z);
+		return itemRotationDeg(item.kind, x, z);
 	}
 
-	function nodeTransformOrigin(item: CanvasBead): string {
-		if (!item.imageUrl || !shouldRadialRotate(item.kind)) return '50% 50%';
-		const { xPct, yPct } = contentCenterInNodePct(item.visual);
-		return `${xPct}% ${yPct}%`;
+	function nodeAnchorPct(item: CanvasBead): { xPct: number; yPct: number } {
+		if (!item.imageUrl) return { xPct: 50, yPct: 50 };
+		if (anchorsAtTop(item.kind) || item.kind === 'spacer') {
+			return contentCenterInNodePct(item.visual);
+		}
+		return { xPct: 50, yPct: 50 };
 	}
 
 	const cordRadiusMm = $derived.by(() => {
@@ -167,6 +171,28 @@
 		}
 		return viewPoses.get(item.itemId) ?? { x: item.pose.position[0], z: item.pose.position[2] };
 	}
+
+	/**
+	 * Last CSS rotate used per item. atan2 jumps ±180° at the bottom of the
+	 * circle; unwrapping keeps charm/spacer spin continuous for transitions.
+	 */
+	const prevNodeRotDeg = new Map<string, number>();
+
+	const nodeRotDegById = $derived.by(() => {
+		const next = new Map<string, number>();
+		for (const item of viewItems) {
+			const pos = nodePosition(item);
+			const raw = nodeRotationDeg(item, pos.x, pos.z);
+			const prev = prevNodeRotDeg.get(item.itemId);
+			const value = prev === undefined ? raw : unwrapDegrees(prev, raw);
+			next.set(item.itemId, value);
+			prevNodeRotDeg.set(item.itemId, value);
+		}
+		for (const id of [...prevNodeRotDeg.keys()]) {
+			if (!next.has(id)) prevNodeRotDeg.delete(id);
+		}
+		return next;
+	});
 
 	/** Map a pointer event to layout millimetres inside the square world. */
 	function eventToMm(event: Pick<PointerEvent, 'clientX' | 'clientY'>): { x: number; z: number } | null {
@@ -352,6 +378,7 @@
 			const diameter = toPx(displayDiameter(item));
 			const img = item.imageUrl ? images.get(item.imageUrl) : null;
 			const rot = nodeRotationDeg(item, x, z) * (Math.PI / 180);
+			const anchor = nodeAnchorPct(item);
 
 			if (img) {
 				const iw = img.naturalWidth || img.width;
@@ -359,10 +386,14 @@
 				const scale = Math.min(diameter / iw, diameter / ih);
 				const dw = iw * scale;
 				const dh = ih * scale;
+				const ox = (diameter - dw) / 2;
+				const oy = (diameter - dh) / 2;
 				ctx.save();
 				ctx.translate(px, py);
 				ctx.rotate(rot);
-				ctx.drawImage(img, -dw / 2, -dh / 2, dw, dh);
+				// Pin the visual anchor (centre for beads/rings, clasp for charms) at the pose.
+				ctx.translate((-anchor.xPct / 100) * diameter, (-anchor.yPct / 100) * diameter);
+				ctx.drawImage(img, ox, oy, dw, dh);
 				ctx.restore();
 			} else {
 				ctx.beginPath();
@@ -416,8 +447,8 @@
 			{@const size = sizePct(item)}
 			{@const content = contentSizePct(item)}
 			{@const pos = nodePosition(item)}
-			{@const rot = nodeRotationDeg(item, pos.x, pos.z)}
-			{@const origin = nodeTransformOrigin(item)}
+			{@const rot = nodeRotDegById.get(item.itemId) ?? nodeRotationDeg(item, pos.x, pos.z)}
+			{@const anchor = nodeAnchorPct(item)}
 			{@const selected = item.itemId === selectedItemId}
 			{@const hovered = item.itemId === hoveredId}
 			{@const dragging = drag?.itemId === item.itemId && drag.moved}
@@ -428,12 +459,13 @@
 				class:dragging
 				class:spacer={item.kind === 'spacer'}
 				class:charm={item.kind === 'charm'}
-				style={`left: ${leftPct(pos.x)}%; top: ${topPct(pos.z)}%; width: ${size}%; height: ${size}%; --content: ${content}%;`}
+				class:anchor-top={anchorsAtTop(item.kind)}
+				style={`left: ${leftPct(pos.x)}%; top: ${topPct(pos.z)}%; width: ${size}%; height: ${size}%; --content: ${content}%; --ax: ${anchor.xPct}%; --ay: ${anchor.yPct}%;`}
 				aria-hidden="true"
 				in:enterTransition
 				out:fade={{ duration: 160 }}
 			>
-				<div class="node-spin" style={`--rot: ${rot}deg; --origin: ${origin};`}>
+				<div class="node-spin" style={`--rot: ${rot}deg; --origin: ${anchor.xPct}% ${anchor.yPct}%;`}>
 					{#if item.imageUrl}
 						<img src={item.imageUrl} alt="" draggable="false" />
 					{:else if item.kind === 'spacer'}
@@ -532,6 +564,8 @@
 
 	.node {
 		--content: 100%;
+		--ax: 50%;
+		--ay: 50%;
 		position: absolute;
 		z-index: 1;
 		transform: translate(-50%, -50%);
@@ -543,6 +577,11 @@
 			left 300ms cubic-bezier(0.22, 1, 0.36, 1),
 			top 300ms cubic-bezier(0.22, 1, 0.36, 1),
 			transform 180ms ease;
+	}
+
+	/* Charms: pin clasp (visual anchor) to the cord, body hangs outward. */
+	.node.anchor-top {
+		transform: translate(calc(-1 * var(--ax)), calc(-1 * var(--ay)));
 	}
 
 	.node-spin {
@@ -568,6 +607,10 @@
 		z-index: 2;
 	}
 
+	.node.anchor-top.hovered:not(.dragging) {
+		transform: translate(calc(-1 * var(--ax)), calc(-1 * var(--ay))) scale(1.03);
+	}
+
 	.node.selected {
 		z-index: 3;
 	}
@@ -581,6 +624,10 @@
 		transition: transform 120ms ease;
 		transform: translate(-50%, -50%) scale(1.08);
 		filter: drop-shadow(0 8px 14px rgba(28, 25, 20, 0.22));
+	}
+
+	.node.anchor-top.dragging {
+		transform: translate(calc(-1 * var(--ax)), calc(-1 * var(--ay))) scale(1.08);
 	}
 
 	/* Dual ring reads on light and dark beads; size matches opaque sphere */

@@ -31,13 +31,41 @@ export function contentFillOfNode(visual: ComponentImageVisual | null | undefine
 /**
  * Rotation in degrees so image "up" points radially outward.
  * Default photo orientation is vertical; at the top of the circle rotation is 0°.
+ *
+ * Range is (-180, 180]; values jump at the bottom of the circle. When animating
+ * with CSS `transition` on `rotate`, pass successive values through
+ * {@link unwrapDegrees} so the spin stays continuous across that seam.
  */
 export function radialRotationDeg(x: number, z: number): number {
 	return (Math.atan2(x, -z) * 180) / Math.PI;
 }
 
+/**
+ * Charms hang outward: clasp/"up" of the photo points toward the bracelet centre.
+ * Spacers (rings) stand with "up" pointing outward.
+ */
+export function itemRotationDeg(kind: string, x: number, z: number): number {
+	if (!shouldRadialRotate(kind)) return 0;
+	const outward = radialRotationDeg(x, z);
+	return kind === 'charm' ? outward + 180 : outward;
+}
+
+/**
+ * Shift `target` by ±360° so it is the nearest equivalent orientation to `previous`.
+ * Keeps CSS rotate transitions from taking the long way across the atan2 branch cut.
+ */
+export function unwrapDegrees(previous: number, target: number): number {
+	const delta = ((((target - previous) % 360) + 540) % 360) - 180;
+	return previous + delta;
+}
+
 export function shouldRadialRotate(kind: string): boolean {
 	return kind === 'spacer' || kind === 'charm';
+}
+
+/** True when the pose pin is the photo anchor (clasp), not the node centre. */
+export function anchorsAtTop(kind: string): boolean {
+	return kind === 'charm';
 }
 
 /** Content pivot inside the square node after object-fit:contain (CSS %). */

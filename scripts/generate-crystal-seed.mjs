@@ -731,57 +731,6 @@ for (const item of ASTRIS) {
 	});
 }
 
-// Keep generic non-catalog hardware
-components.push(
-	{
-		id: 'comp-silver-spacer',
-		slug: 'silver-spacer',
-		name: 'Серебряный разделитель',
-		kind: 'spacer',
-		material: 'metal',
-		colorGroup: 'silver',
-		imageUrl: '',
-		tags: ['metal'],
-		active: true,
-	},
-	{
-		id: 'comp-heart-charm',
-		slug: 'heart-charm',
-		name: 'Подвеска-сердце',
-		kind: 'charm',
-		material: 'metal',
-		colorGroup: 'gold',
-		imageUrl: '',
-		tags: ['charm'],
-		active: true,
-	},
-);
-
-variants.push(
-	{
-		id: 'silver-spacer-3',
-		componentId: 'comp-silver-spacer',
-		sku: 'SS-3',
-		diameterMm: 10,
-		axialLengthMm: 3,
-		priceMinor: 5000,
-		visualPresetId: 'metal',
-		stockQuantity: 300,
-		active: true,
-	},
-	{
-		id: 'heart-charm-1',
-		componentId: 'comp-heart-charm',
-		sku: 'HC-1',
-		diameterMm: 10,
-		axialLengthMm: 4,
-		priceMinor: 25000,
-		visualPresetId: 'metal',
-		stockQuantity: 50,
-		active: true,
-	},
-);
-
 const seedDir = path.resolve('seed');
 fs.writeFileSync(path.join(seedDir, 'components.json'), `${JSON.stringify(components, null, 2)}\n`);
 fs.writeFileSync(

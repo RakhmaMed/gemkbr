@@ -1,10 +1,13 @@
 import { describe, expect, it } from 'vitest';
 import {
+	anchorsAtTop,
 	contentCenterInNodePct,
 	contentFillOfNode,
 	displayNodeMm,
+	itemRotationDeg,
 	radialRotationDeg,
 	shouldRadialRotate,
+	unwrapDegrees,
 } from '../../../src/features/bracelet-designer/ui/photo-layout';
 import {
 	DEFAULT_BEAD_VISUAL,
@@ -19,6 +22,15 @@ const goldRingVisual: ComponentImageVisual = {
 	centerX: 0.5066,
 	centerY: 0.4908,
 	imageWidth: 182,
+	imageHeight: 512,
+};
+
+const charmVisual: ComponentImageVisual = {
+	contentWidth: 0.56,
+	contentHeight: 0.97,
+	centerX: 0.5,
+	centerY: 0.068,
+	imageWidth: 512,
 	imageHeight: 512,
 };
 
@@ -40,6 +52,30 @@ describe('photo-layout', () => {
 		expect(radialRotationDeg(-10, 0)).toBeCloseTo(-90, 5);
 	});
 
+	it('hangs charms with clasp toward the bracelet centre', () => {
+		expect(itemRotationDeg('spacer', 0, -10)).toBeCloseTo(0, 5);
+		expect(itemRotationDeg('charm', 0, -10)).toBeCloseTo(180, 5);
+		expect(itemRotationDeg('charm', 0, 10)).toBeCloseTo(360, 5);
+		expect(itemRotationDeg('bead', 10, 0)).toBe(0);
+	});
+
+	it('unwraps rotations across the bottom so CSS does not spin 360°', () => {
+		// Charm crossing bottom from the right (≈360°) toward the left (raw ≈0°).
+		expect(unwrapDegrees(350, 10)).toBeCloseTo(370, 5);
+		// Spacer crossing bottom: +179° → raw −179° continues to +181°.
+		expect(unwrapDegrees(179, -179)).toBeCloseTo(181, 5);
+		// Small steps stay put; equivalents within ±180 are unchanged.
+		expect(unwrapDegrees(90, 100)).toBeCloseTo(100, 5);
+		expect(unwrapDegrees(10, 350)).toBeCloseTo(-10, 5);
+	});
+
+	it('anchors charms at the top clasp', () => {
+		expect(anchorsAtTop('charm')).toBe(true);
+		expect(anchorsAtTop('spacer')).toBe(false);
+		const { yPct } = contentCenterInNodePct(charmVisual);
+		expect(yPct).toBeLessThan(15);
+	});
+
 	it('rotates spacers and charms only', () => {
 		expect(shouldRadialRotate('spacer')).toBe(true);
 		expect(shouldRadialRotate('charm')).toBe(true);
@@ -49,7 +85,6 @@ describe('photo-layout', () => {
 	it('maps content center into the letterboxed node', () => {
 		const { xPct, yPct } = contentCenterInNodePct(goldRingVisual);
 		expect(yPct).toBeCloseTo(49.08, 1);
-		// image is tall: letterboxed horizontally, center near mid
 		expect(xPct).toBeGreaterThan(45);
 		expect(xPct).toBeLessThan(55);
 	});

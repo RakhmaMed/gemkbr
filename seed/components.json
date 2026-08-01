@@ -870,8 +870,8 @@
     "visual": {
       "contentWidth": 0.5605,
       "contentHeight": 0.9707,
-      "centerX": 0.6859,
-      "centerY": 0.5965,
+      "centerX": 0.5003,
+      "centerY": 0.0684,
       "imageWidth": 512,
       "imageHeight": 512
     }
@@ -893,8 +893,8 @@
     "visual": {
       "contentWidth": 0.6624,
       "contentHeight": 1,
-      "centerX": 0.624,
-      "centerY": 0.5184,
+      "centerX": 0.4888,
+      "centerY": 0.0536,
       "imageWidth": 234,
       "imageHeight": 512
     }
@@ -916,8 +916,8 @@
     "visual": {
       "contentWidth": 0.9098,
       "contentHeight": 1,
-      "centerX": 0.5377,
-      "centerY": 0.6033,
+      "centerX": 0.4973,
+      "centerY": 0.0536,
       "imageWidth": 377,
       "imageHeight": 512
     }
@@ -939,8 +939,8 @@
     "visual": {
       "contentWidth": 0.7676,
       "contentHeight": 0.9375,
-      "centerX": 0.5111,
-      "centerY": 0.6853,
+      "centerX": 0.5028,
+      "centerY": 0.1135,
       "imageWidth": 512,
       "imageHeight": 512
     }
@@ -962,8 +962,8 @@
     "visual": {
       "contentWidth": 0.9968,
       "contentHeight": 1,
-      "centerX": 0.4957,
-      "centerY": 0.6354,
+      "centerX": 0.4981,
+      "centerY": 0.0536,
       "imageWidth": 314,
       "imageHeight": 512
     }
@@ -985,8 +985,8 @@
     "visual": {
       "contentWidth": 0.5938,
       "contentHeight": 0.9648,
-      "centerX": 0.492,
-      "centerY": 0.6713,
+      "centerX": 0.4944,
+      "centerY": 0.0694,
       "imageWidth": 512,
       "imageHeight": 512
     }
@@ -1008,8 +1008,8 @@
     "visual": {
       "contentWidth": 0.6886,
       "contentHeight": 1,
-      "centerX": 0.584,
-      "centerY": 0.5565,
+      "centerX": 0.5201,
+      "centerY": 0.0536,
       "imageWidth": 334,
       "imageHeight": 512
     }
@@ -1031,8 +1031,8 @@
     "visual": {
       "contentWidth": 0.8468,
       "contentHeight": 1,
-      "centerX": 0.6016,
-      "centerY": 0.6051,
+      "centerX": 0.5066,
+      "centerY": 0.0536,
       "imageWidth": 235,
       "imageHeight": 512
     }
@@ -1054,8 +1054,8 @@
     "visual": {
       "contentWidth": 0.8071,
       "contentHeight": 0.998,
-      "centerX": 0.5284,
-      "centerY": 0.6171,
+      "centerX": 0.5361,
+      "centerY": 0.0536,
       "imageWidth": 280,
       "imageHeight": 512
     }
@@ -1077,8 +1077,8 @@
     "visual": {
       "contentWidth": 0.971,
       "contentHeight": 0.998,
-      "centerX": 0.4819,
-      "centerY": 0.6041,
+      "centerX": 0.508,
+      "centerY": 0.0536,
       "imageWidth": 241,
       "imageHeight": 512
     }
@@ -1100,8 +1100,8 @@
     "visual": {
       "contentWidth": 0.9146,
       "contentHeight": 0.998,
-      "centerX": 0.5305,
-      "centerY": 0.4654,
+      "centerX": 0.5065,
+      "centerY": 0.0536,
       "imageWidth": 199,
       "imageHeight": 512
     }
@@ -1123,8 +1123,8 @@
     "visual": {
       "contentWidth": 0.9449,
       "contentHeight": 1,
-      "centerX": 0.5021,
-      "centerY": 0.6424,
+      "centerX": 0.4991,
+      "centerY": 0.0536,
       "imageWidth": 399,
       "imageHeight": 512
     }
@@ -1146,8 +1146,8 @@
     "visual": {
       "contentWidth": 1,
       "contentHeight": 0.9941,
-      "centerX": 0.5083,
-      "centerY": 0.5793,
+      "centerX": 0.5446,
+      "centerY": 0.0536,
       "imageWidth": 497,
       "imageHeight": 512
     }
@@ -1169,8 +1169,8 @@
     "visual": {
       "contentWidth": 1,
       "contentHeight": 1,
-      "centerX": 0.502,
-      "centerY": 0.5779,
+      "centerX": 0.5136,
+      "centerY": 0.0536,
       "imageWidth": 487,
       "imageHeight": 512
     }
@@ -1834,31 +1834,5 @@
       "imageWidth": 505,
       "imageHeight": 512
     }
-  },
-  {
-    "id": "comp-silver-spacer",
-    "slug": "silver-spacer",
-    "name": "Серебряный разделитель",
-    "kind": "spacer",
-    "material": "metal",
-    "colorGroup": "silver",
-    "imageUrl": "",
-    "tags": [
-      "metal"
-    ],
-    "active": true
-  },
-  {
-    "id": "comp-heart-charm",
-    "slug": "heart-charm",
-    "name": "Подвеска-сердце",
-    "kind": "charm",
-    "material": "metal",
-    "colorGroup": "gold",
-    "imageUrl": "",
-    "tags": [
-      "charm"
-    ],
-    "active": true
   }
 ]
