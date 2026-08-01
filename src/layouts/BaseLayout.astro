@@ -3,6 +3,7 @@ interface Props {
 	title?: string;
 	description?: string;
 	canonicalPath?: string;
+	image?: string;
 }
 
 const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? 'https://gemkbr.ru';
@@ -10,8 +11,10 @@ const {
 	title = 'GemKBR — изделия ручной работы',
 	description = 'Магазин изделий ручной работы и 3D-конструктор браслетов GemKBR.',
 	canonicalPath = Astro.url.pathname,
+	image = '/og.jpg',
 } = Astro.props;
 const canonical = new URL(canonicalPath, siteUrl).toString();
+const ogImage = new URL(image, siteUrl).toString();
 const pathname = Astro.url.pathname;
 
 function navCurrent(href: string, matchPrefix?: string): 'page' | undefined {
@@ -35,6 +38,14 @@ function navCurrent(href: string, matchPrefix?: string): 'page' | undefined {
 		<meta property="og:url" content={canonical} />
 		<meta property="og:type" content="website" />
 		<meta property="og:site_name" content="GemKBR" />
+		<meta property="og:image" content={ogImage} />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
+		<meta property="og:locale" content="ru_RU" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={ogImage} />
 		<slot name="head" />
 		<link rel="stylesheet" href="/styles/global.css" />
 		<link
