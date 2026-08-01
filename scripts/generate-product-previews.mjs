@@ -1,5 +1,5 @@
 /**
- * Compose top-down bracelet product shots from catalog bead webps (or synthetic beads).
+ * Compose top-down bracelet product shots from catalog bead webps.
  * Output: public/catalog/products/*.webp
  */
 import fs from 'node:fs';
@@ -20,27 +20,6 @@ async function loadBead(file) {
 		.resize(BEAD_SIZE, BEAD_SIZE, { fit: 'contain', background: { r: 0, g: 0, b: 0, alpha: 0 } })
 		.webp()
 		.toBuffer();
-}
-
-async function syntheticObsidian() {
-	const svg = Buffer.from(`
-<svg width="${BEAD_SIZE}" height="${BEAD_SIZE}" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <radialGradient id="g" cx="32%" cy="28%" r="68%">
-      <stop offset="0%" stop-color="#5a5a5e"/>
-      <stop offset="35%" stop-color="#1a1a1c"/>
-      <stop offset="78%" stop-color="#0a0a0b"/>
-      <stop offset="100%" stop-color="#000000"/>
-    </radialGradient>
-    <radialGradient id="shine" cx="30%" cy="26%" r="40%">
-      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.45"/>
-      <stop offset="55%" stop-color="#ffffff" stop-opacity="0"/>
-    </radialGradient>
-  </defs>
-  <circle cx="${BEAD_SIZE / 2}" cy="${BEAD_SIZE / 2}" r="${BEAD_SIZE * 0.42}" fill="url(#g)"/>
-  <circle cx="${BEAD_SIZE / 2}" cy="${BEAD_SIZE / 2}" r="${BEAD_SIZE * 0.42}" fill="url(#shine)"/>
-</svg>`);
-	return sharp(svg).webp().toBuffer();
 }
 
 async function composeBracelet(beadBuffers, outName) {
@@ -84,8 +63,11 @@ async function main() {
 	const moonB = await loadBead('blue-moonstone.webp');
 	await composeBracelet([moonA, moonB, moonA, moonB, moonA], 'moonstone-bracelet.webp');
 
-	const obsidian = await syntheticObsidian();
-	await composeBracelet(Array.from({ length: BEAD_COUNT }, () => obsidian), 'obsidian-bracelet.webp');
+	const black = await loadBead('black-obsidian.webp');
+	const silver = await loadBead('silver-obsidian.webp');
+	const gold = await loadBead('gold-obsidian.webp');
+	// Mostly black with silver/gold sheen accents — matches the minimalist Obsidian product.
+	await composeBracelet([black, black, silver, black, black, gold], 'obsidian-bracelet.webp');
 }
 
 main().catch((error) => {
