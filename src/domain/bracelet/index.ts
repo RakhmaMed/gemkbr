@@ -1,4 +1,5 @@
 export * from './types';
+export * from './image-visual';
 export * from './operations';
 export * from './length';
 export * from './pricing';

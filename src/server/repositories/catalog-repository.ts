@@ -1,4 +1,9 @@
-import type { BraceletTemplate, ComponentDimensions, ComponentKind } from '../../domain/bracelet';
+import type {
+	BraceletTemplate,
+	ComponentDimensions,
+	ComponentImageVisual,
+	ComponentKind,
+} from '../../domain/bracelet';
 
 export type CatalogComponent = {
 	id: string;
@@ -9,6 +14,7 @@ export type CatalogComponent = {
 	colorGroup: string;
 	imageUrl: string;
 	tags: string[];
+	visual: ComponentImageVisual | null;
 	active: boolean;
 };
 
@@ -17,6 +23,7 @@ export type CatalogComponentVariant = ComponentDimensions & {
 	sku: string;
 	visualPresetId: string;
 	imageUrl: string;
+	visual: ComponentImageVisual | null;
 	stockQuantity: number | null;
 	name: string;
 };

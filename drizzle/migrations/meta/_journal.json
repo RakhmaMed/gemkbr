@@ -22,6 +22,13 @@
       "when": 1785511200000,
       "tag": "0002_add_product_image_url",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "6",
+      "when": 1785570000000,
+      "tag": "0003_add_component_visual_json",
+      "breakpoints": true
     }
   ]
 }

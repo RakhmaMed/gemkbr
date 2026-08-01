@@ -20,6 +20,7 @@
 		type BraceletDesign,
 		type BraceletTemplate,
 		type ComponentDimensions,
+		type ComponentImageVisual,
 	} from '../../../domain/bracelet';
 	import { formatRub } from '../../../lib/money';
 	import BraceletCanvas from './BraceletCanvas.svelte';
@@ -33,6 +34,7 @@
 		colorGroup: string;
 		imageUrl: string;
 		tags: string[];
+		visual: ComponentImageVisual | null;
 		active: boolean;
 	};
 
@@ -41,6 +43,7 @@
 		sku: string;
 		visualPresetId: string;
 		imageUrl: string;
+		visual: ComponentImageVisual | null;
 		stockQuantity: number | null;
 		name: string;
 	};
@@ -151,6 +154,7 @@
 					kind: variant.kind,
 					imageUrl: variant.imageUrl,
 					visualPresetId: variant.visualPresetId,
+					visual: variant.visual,
 					diameterMm: variant.diameterMm,
 					axialLengthMm: variant.axialLengthMm,
 					name: variant.name ?? variant.sku,

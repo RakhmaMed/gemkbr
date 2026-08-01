@@ -37,6 +37,7 @@ export const components = sqliteTable('components', {
 	colorGroup: text('color_group').notNull().default(''),
 	imageUrl: text('image_url').notNull().default(''),
 	tagsJson: text('tags_json').notNull().default('[]'),
+	visualJson: text('visual_json').notNull().default(''),
 	active: integer('active', { mode: 'boolean' }).notNull().default(true),
 });
 

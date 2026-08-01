@@ -20,7 +20,7 @@ describe('CatalogRepository contract (sqlite)', () => {
       CREATE TABLE components (
         id TEXT PRIMARY KEY, slug TEXT NOT NULL UNIQUE, name TEXT NOT NULL, kind TEXT NOT NULL,
         material TEXT NOT NULL, color_group TEXT NOT NULL, image_url TEXT NOT NULL DEFAULT '',
-        tags_json TEXT NOT NULL, active INTEGER NOT NULL
+        tags_json TEXT NOT NULL, visual_json TEXT NOT NULL DEFAULT '', active INTEGER NOT NULL
       );
       CREATE TABLE component_variants (
         id TEXT PRIMARY KEY, component_id TEXT NOT NULL REFERENCES components(id), sku TEXT NOT NULL UNIQUE,
@@ -43,7 +43,7 @@ describe('CatalogRepository contract (sqlite)', () => {
     `);
 		sqlite
 			.prepare(
-				`INSERT INTO components VALUES ('c1','pink','Pink','bead','stone','pink','https://example.com/pink.webp','[]',1)`,
+				`INSERT INTO components VALUES ('c1','pink','Pink','bead','stone','pink','https://example.com/pink.webp','[]','',1)`,
 			)
 			.run();
 		sqlite

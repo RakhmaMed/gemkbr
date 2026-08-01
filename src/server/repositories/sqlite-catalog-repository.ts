@@ -1,5 +1,6 @@
 import { eq } from 'drizzle-orm';
 import type { BraceletTemplate } from '../../domain/bracelet';
+import { parseImageVisual } from '../../domain/bracelet';
 import type { AppDb } from '../db/client';
 import {
 	braceletTemplates,
@@ -60,6 +61,7 @@ export class SqliteCatalogRepository implements CatalogRepository {
 			colorGroup: row.colorGroup,
 			imageUrl: row.imageUrl,
 			tags: JSON.parse(row.tagsJson) as string[],
+			visual: parseImageVisual(row.visualJson),
 			active: row.active,
 		}));
 	}
@@ -83,6 +85,7 @@ export class SqliteCatalogRepository implements CatalogRepository {
 			priceMinor: variant.priceMinor,
 			visualPresetId: variant.visualPresetId,
 			imageUrl: component.imageUrl,
+			visual: parseImageVisual(component.visualJson),
 			stockQuantity: variant.stockQuantity,
 			active: variant.active && component.active,
 			kind: component.kind as CatalogComponentVariant['kind'],

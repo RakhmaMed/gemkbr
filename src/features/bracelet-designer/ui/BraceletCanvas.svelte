@@ -1,8 +1,15 @@
 <script lang="ts">
 	import { cubicOut } from 'svelte/easing';
 	import { fade, scale } from 'svelte/transition';
-	import type { LayoutPose } from '../../../domain/bracelet';
+	import type { ComponentImageVisual, LayoutPose } from '../../../domain/bracelet';
 	import { angleFromPoint, insertIndexForAngle } from './circle-order';
+	import {
+		contentCenterInNodePct,
+		contentFillOfNode,
+		displayNodeMm,
+		radialRotationDeg,
+		shouldRadialRotate,
+	} from './photo-layout';
 
 	export type CanvasBead = {
 		itemId: string;
@@ -10,6 +17,7 @@
 		kind: string;
 		imageUrl: string;
 		visualPresetId: string;
+		visual: ComponentImageVisual | null;
 		diameterMm: number;
 		axialLengthMm: number;
 		name: string;
@@ -27,12 +35,6 @@
 		onReorder?: (itemId: string, toIndex: number) => void;
 	} = $props();
 
-	/**
-	 * Catalog webps are ~512² with the opaque bead only ~60% of the frame.
-	 * Scale photo nodes up so neighbouring visible spheres touch.
-	 */
-	const PHOTO_CONTENT_FILL = 0.6;
-	const PHOTO_SCALE = 1 / PHOTO_CONTENT_FILL;
 	/** Margin inside the square world so beads don't kiss the edge. */
 	const PAD = 0.92;
 	const DRAG_THRESHOLD_PX = 6;
@@ -64,7 +66,7 @@
 	}
 
 	function displayDiameter(item: CanvasBead): number {
-		return item.imageUrl ? item.diameterMm * PHOTO_SCALE : item.diameterMm;
+		return item.imageUrl ? displayNodeMm(item.diameterMm, item.visual) : item.diameterMm;
 	}
 
 	/** Half-extent of the bracelet in layout millimetres (includes visual bead radius). */
@@ -97,7 +99,18 @@
 
 	/** Selection / hit circle as % of the photo node (opaque content). */
 	function contentSizePct(item: CanvasBead): number {
-		return item.imageUrl ? PHOTO_CONTENT_FILL * 100 : 100;
+		return item.imageUrl ? contentFillOfNode(item.visual) * 100 : 100;
+	}
+
+	function nodeRotationDeg(item: CanvasBead, x: number, z: number): number {
+		if (!shouldRadialRotate(item.kind)) return 0;
+		return radialRotationDeg(x, z);
+	}
+
+	function nodeTransformOrigin(item: CanvasBead): string {
+		if (!item.imageUrl || !shouldRadialRotate(item.kind)) return '50% 50%';
+		const { xPct, yPct } = contentCenterInNodePct(item.visual);
+		return `${xPct}% ${yPct}%`;
 	}
 
 	const cordRadiusMm = $derived.by(() => {
@@ -338,9 +351,19 @@
 			const py = center + toPx(z);
 			const diameter = toPx(displayDiameter(item));
 			const img = item.imageUrl ? images.get(item.imageUrl) : null;
+			const rot = nodeRotationDeg(item, x, z) * (Math.PI / 180);
 
 			if (img) {
-				ctx.drawImage(img, px - diameter / 2, py - diameter / 2, diameter, diameter);
+				const iw = img.naturalWidth || img.width;
+				const ih = img.naturalHeight || img.height;
+				const scale = Math.min(diameter / iw, diameter / ih);
+				const dw = iw * scale;
+				const dh = ih * scale;
+				ctx.save();
+				ctx.translate(px, py);
+				ctx.rotate(rot);
+				ctx.drawImage(img, -dw / 2, -dh / 2, dw, dh);
+				ctx.restore();
 			} else {
 				ctx.beginPath();
 				ctx.arc(px, py, diameter / 2, 0, Math.PI * 2);
@@ -393,6 +416,8 @@
 			{@const size = sizePct(item)}
 			{@const content = contentSizePct(item)}
 			{@const pos = nodePosition(item)}
+			{@const rot = nodeRotationDeg(item, pos.x, pos.z)}
+			{@const origin = nodeTransformOrigin(item)}
 			{@const selected = item.itemId === selectedItemId}
 			{@const hovered = item.itemId === hoveredId}
 			{@const dragging = drag?.itemId === item.itemId && drag.moved}
@@ -408,18 +433,20 @@
 				in:enterTransition
 				out:fade={{ duration: 160 }}
 			>
-				{#if item.imageUrl}
-					<img src={item.imageUrl} alt="" draggable="false" />
-				{:else if item.kind === 'spacer'}
-					<span class="fallback spacer-fallback" data-preset={item.visualPresetId}></span>
-				{:else if item.kind === 'charm'}
-					<span class="fallback charm-fallback" data-preset={item.visualPresetId}></span>
-				{:else}
-					<span class="fallback bead-fallback" data-preset={item.visualPresetId}></span>
-				{/if}
-				{#if selected}
-					<span class="select-ring" aria-hidden="true"></span>
-				{/if}
+				<div class="node-spin" style={`--rot: ${rot}deg; --origin: ${origin};`}>
+					{#if item.imageUrl}
+						<img src={item.imageUrl} alt="" draggable="false" />
+					{:else if item.kind === 'spacer'}
+						<span class="fallback spacer-fallback" data-preset={item.visualPresetId}></span>
+					{:else if item.kind === 'charm'}
+						<span class="fallback charm-fallback" data-preset={item.visualPresetId}></span>
+					{:else}
+						<span class="fallback bead-fallback" data-preset={item.visualPresetId}></span>
+					{/if}
+					{#if selected}
+						<span class="select-ring" aria-hidden="true"></span>
+					{/if}
+				</div>
 			</div>
 		{/each}
 	</div>
@@ -518,9 +545,21 @@
 			transform 180ms ease;
 	}
 
+	.node-spin {
+		--rot: 0deg;
+		--origin: 50% 50%;
+		position: relative;
+		width: 100%;
+		height: 100%;
+		transform: rotate(var(--rot));
+		transform-origin: var(--origin);
+		transition: transform 180ms ease;
+	}
+
 	.world.suppress-motion .guide,
 	.world.suppress-motion .cord,
-	.world.suppress-motion .node {
+	.world.suppress-motion .node,
+	.world.suppress-motion .node-spin {
 		transition: none;
 	}
 

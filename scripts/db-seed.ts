@@ -40,6 +40,14 @@ async function seed() {
 			colorGroup: string;
 			imageUrl?: string;
 			tags: string[];
+			visual?: {
+				contentWidth: number;
+				contentHeight: number;
+				centerX: number;
+				centerY: number;
+				imageWidth: number;
+				imageHeight: number;
+			};
 			active: boolean;
 		}>
 	>('components.json');
@@ -113,12 +121,12 @@ async function seed() {
 	}
 
 	const upsertComponent = sqlite.prepare(`
-    INSERT INTO components (id, slug, name, kind, material, color_group, image_url, tags_json, active)
-    VALUES (@id, @slug, @name, @kind, @material, @colorGroup, @imageUrl, @tagsJson, @active)
+    INSERT INTO components (id, slug, name, kind, material, color_group, image_url, tags_json, visual_json, active)
+    VALUES (@id, @slug, @name, @kind, @material, @colorGroup, @imageUrl, @tagsJson, @visualJson, @active)
     ON CONFLICT(id) DO UPDATE SET
       slug=excluded.slug, name=excluded.name, kind=excluded.kind, material=excluded.material,
       color_group=excluded.color_group, image_url=excluded.image_url, tags_json=excluded.tags_json,
-      active=excluded.active
+      visual_json=excluded.visual_json, active=excluded.active
   `);
 	for (const row of components) {
 		upsertComponent.run({
@@ -130,6 +138,7 @@ async function seed() {
 			colorGroup: row.colorGroup,
 			imageUrl: row.imageUrl ?? '',
 			tagsJson: JSON.stringify(row.tags),
+			visualJson: row.visual ? JSON.stringify(row.visual) : '',
 			active: row.active ? 1 : 0,
 		});
 	}
